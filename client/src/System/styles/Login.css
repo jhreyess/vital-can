@@ -1,0 +1,125 @@
+/*Color palette
+light purple - #C3B1E1
+purple - #af90e2
+blue - #1a94d3
+light gray - #dfdfdf
+gray - #a3a3a3
+dark gray - #7f7f7f
+green - rgba(17, 158, 12,1)
+light green - rgba(17, 158, 12,0.8)
+crimson - dc143c
+coral - f88c8c
+*/
+
+.login::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url('../assets/background.jpg');
+    background-size: cover;
+    filter: brightness(0.85);
+}
+
+.login{
+    /*background-color: #1a94d3;*/
+
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    position: relative;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.loginform{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputWrapper{
+    position: relative;
+    margin: 16px 0 8px 0;
+}
+
+.formgroup{
+    margin-top: 16px;
+    color: #7f7f7f;
+}
+
+label{
+    position: absolute;
+    left: 0;
+    transition: transform 200ms ease-in-out,
+                color 200ms ease-in-out;
+    pointer-events: none;
+    transform-origin: 0 0;
+}
+
+.logininput::placeholder{
+    color: transparent;
+}
+
+.formgroup::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid #7f7f7f;
+}
+
+.formgroup:hover::before{
+    border-bottom: 1px solid #1a94d3;
+    transition: border 200ms ease-in-out;
+}
+
+.logininput:focus + label,
+.logininput:not(:placeholder-shown) + label{
+    color: #1a94d3;
+    transform: translateY(-100%) scale(0.75);
+}
+
+.logininput{
+    padding: 6px 0 7px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+}
+
+.btn{
+    font-weight: bold;
+    width: 100%;
+    padding: 8px 24px;
+    box-shadow: 0px 3px 5px 0 rgb(0 0 0 / 20%), 
+                0px 2px 2px 0 rgb(0 0 0 / 14%), 
+                0px 1px 3px 0 rgb(0 0 0 / 10%);
+    border: none;
+    cursor: pointer;
+}
+
+.green:hover{
+    background-color:rgba(17, 158, 12,1);
+}
+
+.green{
+    background-color: rgba(17, 158, 12,0.8);
+    color: #dfdfdf;
+}
+
+.error{
+    text-align: left;
+    font-size: 0.75em;
+    transform: translate(0, -125%);
+    font-weight: bold;
+    color: #dc143c;
+}
+
+.margin24{
+    margin-top: 24px;
+}
