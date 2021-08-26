@@ -1,4 +1,4 @@
-import '../styles/Card.css';
+import '../../styles/Card.css';
 
 const Card = (props) => {
     return(
@@ -8,6 +8,7 @@ const Card = (props) => {
                     <img className="cardlogo" alt="Logo" src={props.logo}></img>
                     <div className="cardinfo">{props.children}</div>
                 </div>
+                <span className="margin24">Powered by VetSeid System</span>
             </div>
         </div>
     )

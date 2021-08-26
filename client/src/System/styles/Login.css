@@ -1,37 +1,14 @@
-/*Color palette
-light purple - #C3B1E1
-purple - #af90e2
-blue - #1a94d3
-light gray - #dfdfdf
-gray - #a3a3a3
-dark gray - #7f7f7f
-green - rgba(17, 158, 12,1)
-light green - rgba(17, 158, 12,0.8)
-crimson - dc143c
-coral - f88c8c
-*/
-
-.login::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-image: url('../assets/background.jpg');
-    background-size: cover;
-    filter: brightness(0.85);
-}
-
 .login{
-    /*background-color: #1a94d3;*/
-
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.25)), 
+                      url('../assets/background.jpg');
+    background-size: cover;
+    background-position: center;
     height: 100%;
     min-height: 100vh;
     display: flex;
     position: relative;
-    flex-grow: 1;
     flex-direction: column;
+    font-family: sans-serif;
 }
 
 .loginform{
@@ -47,7 +24,28 @@ coral - f88c8c
 
 .formgroup{
     margin-top: 16px;
-    color: #7f7f7f;
+    color: #707070;
+    border-bottom: 1px solid #707070;
+    transition: border 200ms ease-in-out;
+}
+
+.formgroup:hover{
+    border-color: #045e8b;
+}
+
+.formgroup::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 0%;
+    transition: width 200ms ease-in-out;
+    border-bottom: 2px solid #045e8b;
+}
+
+.formgroup:focus-within::before{
+    width: 100%;
 }
 
 label{
@@ -57,33 +55,22 @@ label{
                 color 200ms ease-in-out;
     pointer-events: none;
     transform-origin: 0 0;
+    transform: translateY(30%);
 }
 
 .logininput::placeholder{
     color: transparent;
 }
 
-.formgroup::before{
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-bottom: 1px solid #7f7f7f;
-}
-
-.formgroup:hover::before{
-    border-bottom: 1px solid #1a94d3;
-    transition: border 200ms ease-in-out;
-}
 
 .logininput:focus + label,
-.logininput:not(:placeholder-shown) + label{
-    color: #1a94d3;
+.logininput:not([value='']) + label{
+    color: #045e8b;
     transform: translateY(-100%) scale(0.75);
 }
 
 .logininput{
+    font-size: 1rem;
     padding: 6px 0 7px;
     width: 100%;
     box-sizing: border-box;
@@ -103,13 +90,23 @@ label{
     cursor: pointer;
 }
 
-.green:hover{
-    background-color:rgba(17, 158, 12,1);
-}
-
 .green{
     background-color: rgba(17, 158, 12,0.8);
-    color: #dfdfdf;
+    color: #e0e0e0;
+}
+
+.green:hover{
+    background-color:#119e0c;
+}
+
+
+.blue{
+    background-color: #1577bd;
+    color: #e0e0e0;
+}
+
+.blue:hover{
+    background-color: #045e8b;
 }
 
 .error{

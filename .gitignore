@@ -3,3 +3,5 @@ node_modules/
 
 #Ignora api keys
 .env
+
+colorPalette.css

@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 
 //Components
-import Card from '../Card';
+import Card from '../Login/Card';
 
 //actions
-import {loginUser} from '../../actions/authActions';
+import auth from '../../actions/authActions';
 //assets
 import logo from '../../assets/Logo.png';
 
 //styles
 import '../../styles/Login.css';
 
-const Login = () => {
+const Login = (props) => {
 
     const [errors, setErrors] = useState({});
     const [user, setUser] = useState({email: '', password: ''})
@@ -24,9 +24,12 @@ const Login = () => {
     }
 
     const onSubmit = async e => {
+        setErrors({});
         e.preventDefault();
-        setErrors(await loginUser(user));
-        console.log(errors);
+        auth.loginUser(user).then(err => {
+            setErrors(err);
+            if(err.success) props.history.push("/records");
+        });
     }
 
 
@@ -42,7 +45,6 @@ const Login = () => {
                                 type="text" 
                                 className="logininput" 
                                 id="email" 
-                                placeholder="Email" 
                                 value={user.email}>
                             </input>
                             <label htmlFor="email">Email</label>
@@ -56,7 +58,6 @@ const Login = () => {
                                 type="password" 
                                 className="logininput" 
                                 id="password" 
-                                placeholder="Password" 
                                 value={user.password}>    
                             </input>
                             <label htmlFor="password">Password</label>
@@ -64,7 +65,7 @@ const Login = () => {
                     </div>
                     {(errors.password || errors.passwordincorrect) && <div className="error margin24">{errors.password || errors.passwordincorrect}</div>}
                     <button 
-                        className="btn green margin24"
+                        className="btn blue margin24"
                         type="submit">SIGN IN</button>
                 </form>
             </Card>
