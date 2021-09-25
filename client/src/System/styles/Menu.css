@@ -1,0 +1,85 @@
+.sidebar{
+    background: #1577bd;
+    width: 45%;
+    max-width: 350px;
+}
+
+.open{
+    width: 48px;
+}
+
+.hidden{
+    display: none;
+}
+
+.burgerContainer{
+    padding: 1em;
+}
+
+.burgerIcon{
+    display: inline-block;
+}
+
+
+.burgerIcon:hover{
+    cursor: pointer;
+}
+
+.burgerIcon .burgerLine{
+    pointer-events: none;
+    display: block;
+    background-color: #fff;
+    width: 24px;
+    height: 4px;
+    margin: 4px 0;
+    border-radius: 4px;
+    transition: transform 200ms ease-in-out;
+}
+
+.active .burgerLine:nth-child(1){
+    transform: rotate(45deg);
+    transform-origin: 0 0;
+}
+.active .burgerLine:nth-child(2){
+    visibility: hidden;
+}
+.active .burgerLine:nth-child(3){
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+}
+
+.menuItems{
+    padding: 0;
+    margin: 0;
+}
+
+.menuItems li{
+    list-style: none;
+}
+
+.menuItems li a,
+.menuItems li p,
+.menuItems li h1{
+    margin: 0;
+    display: block;
+    padding: 0 1em;
+    text-decoration: none;
+    color: #fff;
+    line-height: 2.5em;
+}
+.menuItems li p,
+.menuItems li h1{
+    text-align: center;
+}
+
+.menuItems li img{
+    margin: 0 auto;
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+
+.menuItems li a:hover{
+    background-color: #fff;
+    color: #1577bd;
+}

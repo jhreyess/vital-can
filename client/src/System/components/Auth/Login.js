@@ -28,7 +28,7 @@ const Login = (props) => {
         e.preventDefault();
         auth.loginUser(user).then(err => {
             setErrors(err);
-            if(err.success) props.history.push("/records");
+            if(err.success) props.history.push("/app");
         });
     }
 

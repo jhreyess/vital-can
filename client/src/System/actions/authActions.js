@@ -2,6 +2,7 @@ class Auth{
     constructor(){
         this.authenticated = false;
         this.userRole = "";
+        this.userName = "";
     }
 
     loginUser = async userData => {
@@ -18,6 +19,7 @@ class Auth{
         if(response.status === 200 && result.success === true){
             this.authenticated = true;
             this.userRole = result.role;
+            this.userName = result.username;
         }
         return result;
     }
@@ -28,6 +30,10 @@ class Auth{
 
     role(){
         return this.userRole;
+    }
+
+    name(){
+        return this.userName;
     }
 }
 

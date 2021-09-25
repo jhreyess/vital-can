@@ -1,0 +1,35 @@
+.modules{
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.moduleCardwrapper{
+    width: 450px;
+    margin: 0.75rem;
+    border-radius: 4px;
+}
+
+.moduleCard{
+    padding: 16px 24px 24px;
+    box-shadow: 0px 3px 5px 0 rgb(0 0 0 / 20%), 
+                0px 2px 2px 0 rgb(0 0 0 / 14%), 
+                0px 1px 3px 0 rgb(0 0 0 / 10%);
+    background-color: rgba(255,255,255,0.5);
+    border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.modules > a{
+    color: #193e50;
+    text-decoration: none;
+}
+
+.modules > a:hover > .moduleCardwrapper{
+    background-color: #e0e0e0;
+}
+
+.modules > a p{
+    color: #707070;
+}
