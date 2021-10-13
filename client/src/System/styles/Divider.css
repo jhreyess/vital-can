@@ -1,4 +1,25 @@
 .divider{
+    border: 0;
+    position: relative;
+    color: #707070;
+    font-size: 0.8em;
+}
+
+.divider::before{
+    content:"";
+    position: absolute;
+    left: 0;
+    top: 50%;
     height: 1px;
-    background-color: #e0e0e0;
+    width: 100%;
+    background-color: #c0c0c0;
+}
+
+.divider::after{
+    content: attr(data-content);
+    position: relative;
+    padding: 0 0.5em;
+    height: 1px;
+    margin-left: 24px;
+    background-color: #fafafa;
 }

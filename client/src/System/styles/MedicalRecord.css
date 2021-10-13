@@ -1,0 +1,67 @@
+.medicalRecord{
+    margin: 0 2.5em;
+}
+
+.medicalRecordNav{
+    display: flex;
+    text-align: center;
+    background-color: #e0e0e0;
+    border-radius: 8px 8px 0 0;
+}
+
+.medicalRecordNav a{
+    padding: 16px;
+    color: #404040;
+    text-decoration: none;
+    flex-grow: 1;
+    border-bottom: 1px solid #3399ff;
+}
+
+.medicalRecordNav a:not(.medicalRecordOpen):hover{
+    color: #3399ff;
+}
+
+
+.medicalRecordNav .medicalRecordOpen{
+    background-color: #fff;
+    border: 1px solid #3399ff;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    pointer-events: none;
+    cursor: default;
+}
+
+.medicalRecordInfo{
+    border-radius: 0 0 8px 8px;
+    padding: 16px;
+    background-color: #fff;
+    border: 1px solid #3399ff;
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.medicalRecordInfo > .appointment{
+    margin: 1em;
+    padding: 1em 0;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.medicalRecordVaccine{
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.appointment > .appointmentInfo{
+    flex-grow: 1;
+}
+
+.medicalRecordInfo > .appointment h2,
+.medicalRecordInfo > .appointment p{
+    margin: 0;
+    font-weight: normal;
+}

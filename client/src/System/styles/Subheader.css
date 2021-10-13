@@ -3,8 +3,28 @@ h1{
 }
 
 .subheader{
-    background-color: #33bbff;
-    color: #fff;
+    background-color: #3399ff;
+    color: #fafafa;
     padding: 12px;
-    border-bottom: 1px solid #e0e0e0;
 }
+
+.nav{
+    color: #fafafa;
+    text-decoration: none;
+}
+
+.nav:hover{
+    text-decoration: underline;
+}
+
+.arrow{
+    display:inline;
+    padding: 0 10px;
+}
+
+.arrow::after{
+    content: ">";
+}
+
+
+

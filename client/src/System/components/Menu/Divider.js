@@ -1,8 +1,8 @@
 import '../../styles/Divider.css';
 
-const Divider = () => {
+const Divider = (props) => {
     return(
-        <div className="divider"></div>
+        <hr className="divider" data-content={props.title} />
     )
 }
 

@@ -1,5 +1,5 @@
 .sidebar{
-    background: #1577bd;
+    background: #045e8b;
     width: 45%;
     max-width: 350px;
 }
@@ -28,7 +28,7 @@
 .burgerIcon .burgerLine{
     pointer-events: none;
     display: block;
-    background-color: #fff;
+    background-color: #fafafa;
     width: 24px;
     height: 4px;
     margin: 4px 0;
@@ -64,7 +64,7 @@
     display: block;
     padding: 0 1em;
     text-decoration: none;
-    color: #fff;
+    color: #fafafa;
     line-height: 2.5em;
 }
 .menuItems li p,
@@ -80,6 +80,6 @@
 }
 
 .menuItems li a:hover{
-    background-color: #fff;
+    background-color: #fafafa;
     color: #1577bd;
 }

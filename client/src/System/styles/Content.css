@@ -12,3 +12,7 @@
 .data{
     width: 100%;
 }
+
+.data-subheader{
+    padding: 16px 2em;
+}

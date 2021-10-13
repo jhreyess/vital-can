@@ -47,7 +47,7 @@
     width: 100%;
 }
 
-label{
+.loginLabel{
     position: absolute;
     left: 0;
     transition: transform 200ms ease-in-out,
@@ -62,8 +62,8 @@ label{
 }
 
 
-.logininput:focus + label,
-.logininput:not([value='']) + label{
+.logininput:focus + .loginLabel,
+.logininput:not([value='']) + .loginLabel{
     color: #045e8b;
     transform: translateY(-100%) scale(0.75);
 }
@@ -78,36 +78,6 @@ label{
     background-color: transparent;
 }
 
-.btn{
-    font-weight: bold;
-    width: 100%;
-    padding: 8px 24px;
-    box-shadow: 0px 3px 5px 0 rgb(0 0 0 / 20%), 
-                0px 2px 2px 0 rgb(0 0 0 / 14%), 
-                0px 1px 3px 0 rgb(0 0 0 / 10%);
-    border: none;
-    cursor: pointer;
-}
-
-.green{
-    background-color: rgba(17, 158, 12,0.8);
-    color: #e0e0e0;
-}
-
-.green:hover{
-    background-color:#119e0c;
-}
-
-
-.blue{
-    background-color: #1577bd;
-    color: #e0e0e0;
-}
-
-.blue:hover{
-    background-color: #045e8b;
-}
-
 .error{
     text-align: left;
     font-size: 0.75em;
@@ -118,4 +88,5 @@ label{
 
 .margin24{
     margin-top: 24px;
+    font-weight: bold;
 }

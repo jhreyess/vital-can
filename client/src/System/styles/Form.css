@@ -1,0 +1,124 @@
+.form{
+    padding: 2em 5em;
+}
+
+.inner{
+    padding: 0;
+}
+
+.form form {
+    display: flex;
+}
+
+.form-column{
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.form-column-inner{
+    padding: 0;
+}
+
+.form-column.last-column{
+    flex: 0 0 20%;
+    justify-content: center;
+}
+
+.form-column.last-column.form-row:nth-child(1){
+    justify-content: center;
+}
+
+.form form img{
+    object-fit: cover;
+    height: 100%;
+    border: 1px solid #c0c0c0;
+}
+
+.form-row{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+.form-row-inner{
+    margin-top: 0;
+}
+
+.form-input{
+    color: #404040;
+    flex: 1 0 45%;
+    margin: 0 1em 0 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-input-inner{
+    margin: 0;
+}
+
+.form-input > input,
+.form-input > textarea{
+    flex-grow: 1;
+    width: 100%;
+    padding: 6px 7px;
+    outline: none;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid #c0c0c0;
+}
+
+.form-input > textarea{
+    resize: none;
+}
+
+.form-input:focus-within > input,
+.form-input:focus-within > textarea{
+    border-color: #707070;
+}
+
+.form-input:not(:focus-within) > input:not([value='']),
+.form-input:not(:focus-within) > textarea:not([value='']){
+    color: #707070;
+}
+
+.form-input > .required::after{
+    content: " *";
+    color: #dc143e;
+}
+
+.form-input > .form-subgroup{
+    flex-grow: 1;
+    align-items: center;
+    padding: 0 7px;
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    box-sizing: border-box;
+    border: 1px solid #c0c0c0;
+}
+
+.form-subgroup > .form-subinput{
+    flex-basis: 50%;
+}
+
+.form-subinput > h5{
+    display: inline;
+    margin: 0;
+}
+
+.form-input > .form-subgroup > label{
+    font-size: 1em;
+}
+
+.submit-row{
+    display: flex;
+    margin-top: 2em;
+}
+
+.submit-input{
+    margin-right: 10px;
+}
+
+input[type=file]{
+    display:none;
+}

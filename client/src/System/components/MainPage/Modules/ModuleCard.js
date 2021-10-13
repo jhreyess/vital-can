@@ -9,9 +9,11 @@ const ModuleCard = (props) => {
             <Link to={props.to}>
                 <div className="moduleCardwrapper">
                     <div className="moduleCard">
-                        <h1>{props.text}</h1>
-                        <p>{props.desc}</p>
-                        <div className="image">
+                        <div className="moduleInfo">
+                            <h1>{props.text}</h1>
+                            <p>{props.desc}</p>
+                        </div>
+                        <div className="moduleImage">
                             <img alt="" src={props.img}></img>
                         </div>
                     </div>

@@ -14,10 +14,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/login" component={Login} />
-        <PrivateRoute exact path="/app" component={Content} />
-        <PrivateRoute exact path="/app/records" component={Content} />
-        <PrivateRoute exact path="/app/calendar" component={Content} />
-        <PrivateRoute exact path="/app/profile" component={Content} />
+        <PrivateRoute path="/app" component={Content} />
         <AdminRoute exact path="/admin" component={ ()=> <AdminContent url="Dashboard" />} />
         <AdminRoute exact path="/admin/users" component={ ()=> <AdminContent url="Users" />} />
       </Switch>

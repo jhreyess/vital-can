@@ -47,7 +47,7 @@ const Login = (props) => {
                                 id="email" 
                                 value={user.email}>
                             </input>
-                            <label htmlFor="email">Email</label>
+                            <label className="loginLabel" htmlFor="email">Email</label>
                         </div>
                     </div>
                     {(errors.email || errors.emailnotfound) && <div className="error margin24">{errors.email || errors.emailnotfound}</div>}
@@ -60,12 +60,12 @@ const Login = (props) => {
                                 id="password" 
                                 value={user.password}>    
                             </input>
-                            <label htmlFor="password">Password</label>
+                            <label className="loginLabel" htmlFor="password">Password</label>
                         </div>
                     </div>
                     {(errors.password || errors.passwordincorrect) && <div className="error margin24">{errors.password || errors.passwordincorrect}</div>}
                     <button 
-                        className="btn blue margin24"
+                        className="btn darkblue margin24 extended shadow"
                         type="submit">SIGN IN</button>
                 </form>
             </Card>

@@ -1,9 +1,8 @@
 import {Fragment} from 'react';
-import {Link} from 'react-router-dom';
 
 import Menu from './Menu';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     
     // const adminMenu = auth.role() === "admin" ? (
     //     <Link to="/admin">Dashboard</Link>
@@ -23,8 +22,7 @@ const Sidebar = () => {
 
     const renderMenu = (
         <Menu>
-            <Link to="/app/records/patients">Pacientes</Link>
-            <Link to="/app/records/clients">Clientes</Link>
+            {props.children}
         </Menu>
     );
     

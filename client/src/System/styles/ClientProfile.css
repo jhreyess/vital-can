@@ -1,0 +1,52 @@
+.profileContent{
+    color: #404040;
+    padding: 2em;
+}
+
+.profileHeader{
+    padding: 16px 0;
+    margin: 1em 2em 0 2em;
+}
+
+.profileInfo{
+    display: flex;
+    padding: 2em;
+}
+
+.profileContact{
+    flex-grow: 1;
+    margin-left: 10em;
+}
+
+.profilePets{
+    flex-basis: 25%;
+}
+
+.pet{
+    background-color: #e0e0e0;
+    border: 1px solid #c0c0c0;
+    display: flex;
+    align-items: center;
+}
+
+.petImage{
+    width: 5em;
+    height: 5em;
+}
+
+.petImage img{
+    width: 100%;
+    height: 100%;
+}
+
+.petInfo{
+    margin-left: 10px;
+}
+
+.petInfo p{
+    margin: 0;
+}
+
+.newPet{
+    margin-top: 0.75em;
+}

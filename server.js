@@ -19,7 +19,7 @@ require('./models');
 //app.use(passport.initialize());
 //require('./config/passport/')(passport);
 
-//app.use(express.static('client/build'));
+app.use(express.static('client/build'));
 app.use(routes);
 
 app.listen(app.get('port'), (err)=> {

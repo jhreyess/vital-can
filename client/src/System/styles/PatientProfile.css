@@ -1,0 +1,58 @@
+.petProfileContent{
+    color: #404040;
+    padding: 2em;
+    display: flex;
+}
+
+.petProfileContent > .petProfileColumn:nth-child(1){
+    flex-basis: 20%;
+}
+
+.petProfileContent > .petProfileColumn:nth-child(2){
+    flex-grow: 1;
+}
+
+.petProfileHeader{
+    padding: 16px 0;
+    margin: 1em 2em 0 2em;
+    display: flex;
+    align-items: center;
+}
+
+.petProfileImage{
+    width: 10em;
+    height: 10em;
+}
+
+.petProfileImage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.petProfileName{
+    margin-left: 2em;
+}
+
+.petProfileName h1{
+    color: #193e50;
+}
+
+.petProfileName h3{
+    margin: 0.5em 0 0 0;
+}
+
+.petProfileInfo{
+    display: flex;
+    padding: 2em;
+}
+
+.petProfileBasicInfo{
+    flex-basis: 20%;
+}
+
+.petProfileBasicInfoContainer > .petProfileInformation{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
