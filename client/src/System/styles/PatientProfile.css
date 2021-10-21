@@ -2,6 +2,8 @@
     color: #404040;
     padding: 2em;
     display: flex;
+    height: 95%;
+    box-sizing: border-box;
 }
 
 .petProfileContent > .petProfileColumn:nth-child(1){
@@ -51,7 +53,7 @@
     flex-basis: 20%;
 }
 
-.petProfileBasicInfoContainer > .petProfileInformation{
+.recordInformationContainer > .recordInformation{
     width: 100%;
     display: inline-block;
     margin-bottom: 10px;

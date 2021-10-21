@@ -8,6 +8,8 @@ import Subheader from '../../../Menu/Subheader';
 
 import pet_img from '../../../../assets/default.jpg';
 
+import {FaHouseUser, FaMailBulk, FaPhoneAlt} from 'react-icons/fa';
+
 import '../../../../styles/ClientProfile.css';
 
 const ClientProfile = (props) => {
@@ -66,12 +68,12 @@ const ClientProfile = (props) => {
                 </div>
                 <div className="profileContact">
                     <h2>Información de Contacto</h2>
-                    <ul>
-                        <li>{data.info.telephone1}</li>
-                        <li>{data.info.telephone2}</li>
-                        <li>{data.info.address}</li>
-                        <li>{data.info.email}</li>
-                    </ul>
+                    <div className="recordInformationContainer">
+                        <div className="recordInformation"><FaPhoneAlt /> {data.info.telephone1}</div>
+                        <div className="recordInformation"><FaPhoneAlt /> {data.info.telephone2}</div>
+                        <div className="recordInformation"><FaHouseUser /> {data.info.address}</div>
+                        <div className="recordInformation"><FaMailBulk /> {data.info.email}</div>
+                    </div>
                 </div>
             </div>
         </Fragment>

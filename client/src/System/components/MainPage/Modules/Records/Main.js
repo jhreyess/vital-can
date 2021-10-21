@@ -23,17 +23,6 @@ const Main = () => {
         </Fragment>
     )
 
-    const getRecords = async (url) => {
-        let result = await fetchRecords(url);
-        if(url === 'patients'){
-            setPatients(patients => patients = result);
-            setPatientsLoading(patientsLoaded => patientsLoaded = true);
-        }else{
-            setClients(clients => clients = result);
-            setClientsLoading(clientsLoaded => clientsLoaded = true);
-        }
-    }
-
     const listClients = clients.map((record, idx)=> 
         <RecordCard 
             key={idx}
@@ -59,6 +48,16 @@ const Main = () => {
     );
 
     useEffect(() => {
+        const getRecords = async (url) => {
+            let result = await fetchRecords(url);
+            if(url === 'patients'){
+                setPatients(patients => patients = result);
+                setPatientsLoading(patientsLoaded => patientsLoaded = true);
+            }else{
+                setClients(clients => clients = result);
+                setClientsLoading(clientsLoaded => clientsLoaded = true);
+            }
+        }
         getRecords('clients');
         getRecords('patients');
     }, [])

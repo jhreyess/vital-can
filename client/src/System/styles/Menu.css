@@ -1,19 +1,17 @@
 .sidebar{
     background: #045e8b;
-    width: 45%;
-    max-width: 350px;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    transition: width .3s ease;
 }
 
-.open{
+.collapse{
     width: 48px;
 }
 
-.hidden{
-    display: none;
-}
-
 .burgerContainer{
-    padding: 1em;
+    padding: 1em 1em 2em 1em;
 }
 
 .burgerIcon{
@@ -48,38 +46,72 @@
     transform-origin: 0 100%;
 }
 
+.menuItem{
+    color: #fafafa;
+}
+
 .menuItems{
-    padding: 0;
-    margin: 0;
+    border-bottom: 1px solid #fafafa;
+    flex-grow: 1;
 }
 
-.menuItems li{
-    list-style: none;
+.menuItems.hidden .menuItem div,
+.menuItems.hidden .menuItem p,
+.menuItems.hidden .menuItem h1,
+.logout.hidden div{
+    display: none;
 }
 
-.menuItems li a,
-.menuItems li p,
-.menuItems li h1{
-    margin: 0;
+.menuItem a,
+.logout{
+    color: #fafafa;
+    text-decoration: none;
     display: block;
     padding: 0 1em;
-    text-decoration: none;
-    color: #fafafa;
     line-height: 2.5em;
 }
-.menuItems li p,
-.menuItems li h1{
+
+.menuItem a:hover,
+.logout:hover{
+    color: #1577bd;
+    background-color: #fafafa;
+}
+
+.menuItem a:active,
+.logout:active{
+    margin-left: 2px solid #1577bd;
+    color: #1577bd;
+    background-color: #fafafa;
+}
+
+.menuItem div,
+.logout > div{
+    display: inline;
+}
+
+.menuItem > p,
+.menuItem > h1{
     text-align: center;
 }
 
-.menuItems li img{
+.menuItem > img{
+    width: 70%;
     margin: 0 auto;
     display: block;
-    width: 200px;
-    height: 200px;
+    object-fit: contain;
 }
 
-.menuItems li a:hover{
-    background-color: #fafafa;
-    color: #1577bd;
+.menuItem > .submenuItems{
+    display: block;
+    margin-left: 3em;
+}
+
+.submenuItems a{
+    border-radius: 8px 0 0 8px;
+}
+
+@media (max-width: 425px){
+    .sidebar{
+        display: none;
+    }
 }

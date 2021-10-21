@@ -1,7 +1,17 @@
+.icon-small{
+  width: 0.85em;
+  height: 0.85em;
+}
+
 .icon-medium{
-    width: 3em;
-    height: 3em;
-  }
+  width: 3em;
+  height: 3em;
+}
+
+.icon-large{
+  height: 100%;
+  width: 3em;
+}
 
 .icon-margin{
   margin: 0 5px;
@@ -9,4 +19,20 @@
 
 .icon-right{
     float: right;
+}
+
+.icon-red{
+  color: #dc143c;
+}
+
+.icon-green{
+  color: #119e0c;
+}
+
+.icon-gray{
+  color: #404040;
+}
+
+.icon-blue{
+  color: #045e8b;
 }

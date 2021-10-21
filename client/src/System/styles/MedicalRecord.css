@@ -1,5 +1,8 @@
 .medicalRecord{
     margin: 0 2.5em;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .medicalRecordNav{
@@ -39,6 +42,7 @@
     border-top: none;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .medicalRecordInfo > .appointment{
@@ -50,10 +54,35 @@
     border-bottom: 1px solid #c0c0c0;
 }
 
-.medicalRecordVaccine{
-    display: inline-block;
+.vaccines{
+    border-collapse: collapse;
     width: 100%;
-    margin-top: 10px;
+}
+
+.vaccines th,
+.vaccines td{
+    border: 1px solid #c0c0c0;
+    font-size: 0.7em;
+    text-align: left;
+    padding: 8px;
+    word-break: break-word;
+}
+
+tr > .vaccineActions{
+    text-align: center;
+}
+
+.vaccine:nth-child(even){
+    background-color: #e0e0e0;
+}
+
+.vaccine > td > input{
+    border: 0;
+    margin: 0;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 0.95em;
 }
 
 .appointment > .appointmentInfo{

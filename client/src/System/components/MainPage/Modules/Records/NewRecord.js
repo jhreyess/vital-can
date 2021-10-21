@@ -74,7 +74,7 @@ const NewRecord = (props) => {
         switch(url){
             case 'clients':
                 return(
-                    <Form>
+                    <Form isMain={true}>
                         <div className="form-column">
                             <div className="form-row">
                                 <div className="form-input">
@@ -125,7 +125,7 @@ const NewRecord = (props) => {
                 );
             case 'patients':
                 return(
-                    <Form>
+                    <Form isMain={true}>
                         <div className="form-column">
                             <div className="form-row">
                                 <div className="form-input">

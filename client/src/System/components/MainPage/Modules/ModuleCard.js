@@ -13,9 +13,7 @@ const ModuleCard = (props) => {
                             <h1>{props.text}</h1>
                             <p>{props.desc}</p>
                         </div>
-                        <div className="moduleImage">
-                            <img alt="" src={props.img}></img>
-                        </div>
+                        <div className="moduleImage">{props.img}</div>
                     </div>
                 </div>
             </Link>

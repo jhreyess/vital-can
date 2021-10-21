@@ -1,7 +1,7 @@
 .cardwrapper{
     margin: 0 auto;
     width: 400px;
-    margin-top: 128px;
+    margin-top: 10%;
 }
 
 .cardContainer{
@@ -32,4 +32,11 @@
 .cardinfo{
     margin-top: 24px;
     width: 100%;
+}
+
+@media screen and (max-width: 425px){
+    .cardwrapper{
+        width: auto;
+        margin: 15% 0 0 0;
+    }
 }

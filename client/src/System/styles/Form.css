@@ -4,6 +4,23 @@
 
 .inner{
     padding: 0;
+    overflow-y: scroll;
+    flex-grow: 1;
+}
+
+.is-main{
+    height: 95%;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+
+.inner::-webkit-scrollbar{
+    width: 6px;
+}
+
+.inner::-webkit-scrollbar-thumb{
+    border-radius: 8px;
+    background-color: #c0c0c0;
 }
 
 .form form {
@@ -16,7 +33,7 @@
 }
 
 .form-column-inner{
-    padding: 0;
+    padding: 0 8px 0 0;
 }
 
 .form-column.last-column{
@@ -115,10 +132,23 @@
     margin-top: 2em;
 }
 
+.submit-row-inversed{
+    display: flex;
+    margin: 0.5em 0 1em 0;
+}
+
 .submit-input{
     margin-right: 10px;
 }
 
 input[type=file]{
     display:none;
+}
+
+.search{
+    padding: 6px;
+    outline: none;
+    margin-left: 16px;
+    font-size: 17px;
+    border: 1px solid #cacaca;
 }

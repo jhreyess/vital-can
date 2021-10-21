@@ -1,3 +1,8 @@
+.modulesWrapper{
+    overflow-y: scroll;
+    height: 95%;
+}
+
 .modules{
     display: flex;
     padding: 2em;
@@ -6,10 +11,12 @@
 
 .moduleContent{
     padding: 1em 2em;
+    height: 95%;
+    box-sizing: border-box;
+    overflow-y: scroll;
 }
 
 .moduleCardwrapper{
-    margin: 0.75rem;
     border-radius: 4px;
 }
 
@@ -47,9 +54,10 @@
 }
 
 .modules > a{
-    flex: 1 0 50%;
+    flex: 1 0 45%;
     color: #193e50;
     text-decoration: none;
+    margin: 0.75rem;
 }
 
 .modules > a:hover > .moduleCardwrapper{
@@ -58,4 +66,10 @@
 
 .modules > a p{
     color: #707070;
+}
+
+@media (max-width:425px){
+    .modules{
+        padding: 0;
+    }
 }

@@ -54,8 +54,22 @@ const PatientSchema = new Schema({
         required: false
       },
       vaccines: {
-        type: Array,
-        required: false
+        name:{
+          type: String,
+          required: true
+        },
+        date: {
+          type: Date,
+          required: true,
+        },
+        nextDate: {
+          type: Date,
+          required: true,
+        },
+        next: {
+          type: String,
+          required: true
+        }
       },
       medhistory: {
         type: String,

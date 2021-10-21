@@ -61,12 +61,12 @@ const PatientProfile = (props) => {
                 <div className="petProfileInfo">
                     <div className="petProfileBasicInfo">
                         <h2>Información</h2>
-                        <div className="petProfileBasicInfoContainer">
-                            <div className="petProfileInformation"><FaPhoneAlt /> {data.owner.telephone}</div>
-                            <div className="petProfileInformation"><FaPaw /> {data.health.castrated ? "Sí" : "No"} castrado</div>
-                            <div className="petProfileInformation"><FaMars /> {data.gender}</div>
-                            <div className="petProfileInformation"><FaDumbbell /> {data.weight} kg</div>
-                            <div className="petProfileInformation"><FaBirthdayCake /> {new Date(data.birthday).toLocaleDateString("en-US")}</div>
+                        <div className="recordInformationContainer">
+                            <div className="recordInformation"><FaPhoneAlt /> {data.owner.telephone}</div>
+                            <div className="recordInformation"><FaPaw /> {data.health.castrated ? "Sí" : "No"} castrado</div>
+                            <div className="recordInformation"><FaMars /> {data.gender}</div>
+                            <div className="recordInformation"><FaDumbbell /> {data.weight} kg</div>
+                            <div className="recordInformation"><FaBirthdayCake /> {new Date(data.birthday).toLocaleDateString("es-MX")}</div>
                         </div>
                     </div>
                 </div>

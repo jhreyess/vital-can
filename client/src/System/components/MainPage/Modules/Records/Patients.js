@@ -12,6 +12,7 @@ import { fetchRecords } from '../../../../actions/systemActions'
 
 const Patients = () => {
     const [records, setRecords] = useState([]);
+    const [showRecords, setShowRecords] = useState([]);
     const [hasLoaded, setLoading] = useState(false);
 
     const path = (
@@ -22,13 +23,12 @@ const Patients = () => {
         </Fragment>
     )
 
-    const getRecords = async () => {
-        let result = await fetchRecords('patients');
-        setRecords(records => records = result);
-        setLoading(hasLoaded => hasLoaded = true);
+    const lookFor = (e) => {
+        let lookForRecords = e.target.value;
+        setShowRecords(showRecords => showRecords = records.filter(client => client.name.includes(lookForRecords)))
     }
 
-    const listPatients = records.map((record, idx)=> 
+    const listPatients = showRecords.map((record, idx)=> 
         <RecordCard 
             key={idx}
             isPatient={true}
@@ -41,16 +41,23 @@ const Patients = () => {
     );
 
     useEffect(() => {
+        const getRecords = async () => {
+            let result = await fetchRecords('patients');
+            setRecords(records => records = result);
+            setShowRecords(showRecords => showRecords = result);
+            setLoading(hasLoaded => hasLoaded = true);
+        }
         getRecords();
     }, [])
     
     return(
         <Fragment>
             <Subheader title={path}/>
-            <div className="data-subheader">
-                <Button color="green-outline" to="/app/records/patients/new">Nuevo</Button>
-            </div>
             <div className="moduleContent">
+                <div className="data-subheader">
+                    <Button color="green-outline" to="/app/records/patients/new">Nuevo</Button>
+                    <input type="text" placeholder="Buscar..." className="search" onChange={lookFor}/>
+                </div>
                 <Divider title="Pacientes"/>
                 <div className="records patients">
                     {hasLoaded ? listPatients : <Loader /> }

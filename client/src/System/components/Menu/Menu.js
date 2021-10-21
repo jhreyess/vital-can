@@ -1,5 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import '../../styles/Menu.css';
+
+import {FaCog} from 'react-icons/fa';
 
 const Menu = (props) => {
 
@@ -7,8 +10,10 @@ const Menu = (props) => {
         e.target.classList.toggle('active');
         let sidebar = document.getElementById('sidebar');
         let menuItems = document.getElementById('menuItems');
-        sidebar.classList.toggle('open');
+        let logout = document.getElementById('logout');
+        logout.classList.toggle('hidden');
         menuItems.classList.toggle('hidden');
+        sidebar.classList.toggle('collapse');
     }
 
     return(
@@ -20,11 +25,12 @@ const Menu = (props) => {
                     <span className="burgerLine"></span>
                 </div>
             </div>
-            <ul className="menuItems" id="menuItems">
+            <div className="menuItems" id="menuItems">
                 {React.Children.map(props.children, (menuItem) => (
-                        <li>{menuItem}</li>
+                        <div className="menuItem">{menuItem}</div>
                 ))}
-            </ul>
+            </div>
+            <Link to="/app/profile" id="logout" className="logout"><FaCog/> <div>Opciones</div></Link>
         </div>
     )
 }

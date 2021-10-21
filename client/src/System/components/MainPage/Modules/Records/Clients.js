@@ -13,6 +13,7 @@ import { fetchRecords } from '../../../../actions/systemActions'
 const Clients = () => {
 
     const [records, setRecords] = useState([]);
+    const [showRecords, setShowRecords] = useState([]);
     const [hasLoaded, setLoading] = useState(false);
 
     const path = (
@@ -23,13 +24,12 @@ const Clients = () => {
         </Fragment>
     )
     
-    const getRecords = async () => {
-        let result = await fetchRecords('clients');
-        setRecords(records => records = result);
-        setLoading(hasLoaded => hasLoaded = true);
+    const lookFor = (e) => {
+        let lookForRecords = e.target.value;
+        setShowRecords(showRecords => showRecords = records.filter(client => client.name.includes(lookForRecords)))
     }
 
-    const listClients = records.map((record, idx) => 
+    const listClients = showRecords.map((record, idx) => 
         <RecordCard 
             key={idx}
             isPatient={false}
@@ -41,6 +41,12 @@ const Clients = () => {
     );
 
     useEffect(() => {
+        const getRecords = async () => {
+            let result = await fetchRecords('clients');
+            setRecords(records => records = result)
+            setShowRecords(showRecords => showRecords = result);
+            setLoading(hasLoaded => hasLoaded = true);
+        }
         getRecords();
     }, [])
     
@@ -48,10 +54,11 @@ const Clients = () => {
     return(
         <Fragment>
             <Subheader title={path}/>
-            <div className="data-subheader">
-                <Button color="green-outline" to="/app/records/clients/new">Nuevo</Button>
-            </div>
             <div className="moduleContent">
+                <div className="data-subheader">
+                    <Button color="green-outline" to="/app/records/clients/new">Nuevo</Button>
+                    <input type="text" placeholder="Buscar..." className="search" onChange={lookFor}/>
+                </div>
                 <Divider title="Clientes"/>
                 <div className="records clients">
                     {hasLoaded ? listClients : <Loader /> }

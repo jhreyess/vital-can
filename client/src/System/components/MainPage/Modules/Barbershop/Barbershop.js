@@ -1,9 +1,7 @@
 import {Fragment} from 'react'
 import {Link} from 'react-router-dom'
 
-import Header from '../../../Menu/Header'
 import Subheader from '../../../Menu/Subheader'
-import Sidebar from '../../../Menu/Sidebar'
 
 const Barbershop = () => {
 
@@ -16,13 +14,7 @@ const Barbershop = () => {
 
     return(
         <Fragment>
-            <Header showModules={true}/>
-            <div className="content">
-                <Sidebar />
-                <div className="data">
-                    <Subheader title={path}/>
-                </div>
-            </div>
+            <Subheader title={path}/>
         </Fragment>
     )
 }

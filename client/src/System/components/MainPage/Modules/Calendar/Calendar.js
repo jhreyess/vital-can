@@ -4,9 +4,7 @@ import {Link, Switch, Route} from 'react-router-dom'
 import Main from './Main';
 import NewAppointment from './NewAppointment.js';
 
-import Header from '../../../Menu/Header'
 import Subheader from '../../../Menu/Subheader'
-//import Sidebar from '../../../Menu/Sidebar'
 
 const Calendar = () => {
 
@@ -19,16 +17,11 @@ const Calendar = () => {
 
     return(
         <Fragment>
-            <Header showModules={true}/>
-            <div className="content">
-                <div className="data">
-                    <Subheader title={path}/>
-                    <Switch>
-                        <Route exact path="/app/calendar" component={Main}/>
-                        <Route exact path="/app/calendar/new" component={NewAppointment}/>
-                    </Switch>
-                </div>
-            </div>
+            <Subheader title={path}/>
+            <Switch>
+                <Route exact path="/app/calendar" component={Main}/>
+                <Route exact path="/app/calendar/new" component={NewAppointment}/>
+            </Switch>
         </Fragment>
     )
 }

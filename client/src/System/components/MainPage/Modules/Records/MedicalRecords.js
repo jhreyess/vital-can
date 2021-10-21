@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect } from 'react';
 
 //ICONS
-import { FaFileInvoiceDollar, FaSyringe, FaCalendarAlt, FaTrashAlt, FaEdit } from 'react-icons/fa';
+import { FaFileInvoiceDollar, FaCalendarAlt, FaTrashAlt, FaEdit, FaSyringe} from 'react-icons/fa';
 import '../../../../styles/Icons.css';
 
 import Divider from '../../../Menu/Divider';
@@ -46,24 +46,42 @@ const MedicalRecords = (props) => {
                                 </div>
                                 <div className="form-row form-row-inner">
                                     <div className="form-input form-input-inner">
-                                        <label><Divider title="Alergias" /></label>
+                                        <label><Divider title="Vacunas / ATP" /></label>
                                         <div className="medicalRecordVaccines">
-                                            {props.data.health.vaccines.map((vaccine, idx) => (
-                                                <div key={idx} className="medicalRecordVaccine"><FaSyringe />  {vaccine} <FaTrashAlt className="icon-right icon-margin"/><FaEdit className="icon-right icon-margin"/></div>
-                                            ))}
-                                            <div className="submit-row">
-                                                <button className="btn green" onClick={updateInfo}>Agregar</button>                                          
+                                            <div className="submit-row-inversed">
+                                                <button className="btn green-outline small" onClick={updateInfo}>+ <FaSyringe className="icon-small" /></button>                                         
                                             </div>
+                                            <table className="vaccines">
+                                                <thead>
+                                                <tr><th>#</th><th>Aplicada</th>
+                                                    <th>Fecha</th><th>Prox. Fecha</th>
+                                                    <th>Proxima</th><th className="vaccineActions">Acciones</th></tr>
+                                                </thead>
+                                                <tbody>
+                                                {props.data.health.vaccines.map((vaccine, idx) => (
+                                                    <tr key={idx} className="vaccine">
+                                                        <td>{idx+1}</td>
+                                                        <td>{vaccine.name}</td>
+                                                        <td>{new Date(vaccine.date).toLocaleDateString("es-MX")}</td>
+                                                        <td>{new Date(vaccine.nextDate).toLocaleDateString("es-MX")}</td>
+                                                        <td>{vaccine.next}</td>
+                                                        {/* <td><input type="text" value={vaccine.name} readOnly /></td>
+                                                        <td><input type="date" value={new Date(vaccine.date).toISOString().split('T')[0]} readOnly /></td>
+                                                        <td><input type="date" value={new Date(vaccine.nextDate).toISOString().split('T')[0]} readOnly /></td>
+                                                        <td><input type="text" value={vaccine.next} readOnly /></td> */}
+                                                        <td className="vaccineActions"><FaEdit className="icon-blue icon-margin" /> <FaTrashAlt className="icon-red icon-margin" /></td>
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
                                         </div>
-                                    </div>
-                                </div>
-                                <div className="submit-row">
-                                    <div className="submit-input">
-                                        <button className="btn blue-outline" onClick={updateInfo}>Guardar</button>
                                     </div>
                                 </div>
                             </div>
                         </Form>
+                        <div className="submit-input">
+                            <button className="btn blue-outline" onClick={updateInfo}>Guardar</button>
+                        </div>
                     </Fragment>
                 );
             case 'previous':

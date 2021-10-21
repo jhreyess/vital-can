@@ -66,7 +66,7 @@ const Login = (props) => {
                     {(errors.password || errors.passwordincorrect) && <div className="error margin24">{errors.password || errors.passwordincorrect}</div>}
                     <button 
                         className="btn darkblue margin24 extended shadow"
-                        type="submit">SIGN IN</button>
+                        type="submit">INICIAR SESIÓN</button>
                 </form>
             </Card>
         </div>

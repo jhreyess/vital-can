@@ -5,7 +5,11 @@ h1{
 .subheader{
     background-color: #3399ff;
     color: #fafafa;
-    padding: 12px;
+    padding: 0 0.8em;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
 }
 
 .nav{
