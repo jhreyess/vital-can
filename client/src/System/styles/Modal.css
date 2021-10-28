@@ -1,0 +1,57 @@
+.modalWrapper{
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.modalContent{
+    width: 40%;
+    background-color: #fafafa;
+    border-radius: 8px;
+    position: relative;
+    padding: 1em 2em;
+    top: 40%;
+    margin: 0 auto;
+    transform: translateY(-50%);
+}
+
+.modalContent h2,
+.modalContent h3,
+.modalContent p{
+    text-align: left;
+    margin: 0.25em 0;
+}
+
+.modalContent h3{
+    color: #3784ab;
+}
+
+.modalContent .modalDescription{
+    margin: 1em 0 2em 0;
+}
+
+.modalContent .confirmationButtons{
+    text-align: right;
+}
+
+.modalContent .confirmationButtons button:not(:last-child){
+    margin: 0 0.5em;
+}
+
+.modalClose{
+    color: #193e50;
+    background-color: transparent;
+    border: none;
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.modalClose:hover{
+    color: #256585;
+    cursor: pointer;
+}

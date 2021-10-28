@@ -26,19 +26,22 @@ const Clients = () => {
     
     const lookFor = (e) => {
         let lookForRecords = e.target.value;
-        setShowRecords(showRecords => showRecords = records.filter(client => client.name.includes(lookForRecords)))
+        setShowRecords(showRecords => showRecords = records.filter(client => client.name.toLowerCase().includes(lookForRecords.toLowerCase())))
     }
 
-    const listClients = showRecords.map((record, idx) => 
-        <RecordCard 
-            key={idx}
-            isPatient={false}
-            to={`clients/${record._id}/`}
-            name={record.name}
-            city={record.city}
-            telephone={record.telephone1}
-        />
-    );
+    const listClients = () => {
+        return showRecords.length !== 0 
+            ? showRecords.map((record, idx) => 
+                <RecordCard 
+                    key={idx}
+                    isPatient={false}
+                    to={`clients/${record._id}/`}
+                    name={record.name}
+                    city={record.city}
+                    telephone={record.telephone1}
+                />)
+            : <h2 className="notFound">No se encontraron resultados...</h2>
+    }
 
     useEffect(() => {
         const getRecords = async () => {
@@ -61,7 +64,7 @@ const Clients = () => {
                 </div>
                 <Divider title="Clientes"/>
                 <div className="records clients">
-                    {hasLoaded ? listClients : <Loader /> }
+                    {hasLoaded ? listClients() : <Loader /> }
                 </div>
             </div>
         </Fragment>

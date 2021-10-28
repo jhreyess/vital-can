@@ -20,7 +20,7 @@ const Modules = () => {
                     <ModuleCard to="/app/records" text="Expedientes" desc="Información de los pacientes y los clientes" img={<FaFolderOpen />}/>
                     <ModuleCard to="/app/calendar" text="Citas" desc="Calendarización de citas médicas" img={<FaCalendarAlt />}/>
                     <ModuleCard to="/app/receipts" text="Caja" desc="Generación de Ticket" img={<FaCashRegister />}/>
-                    <ModuleCard to="/app/invoices" text="Facturas" desc="Generación de Facturas" img={<FaFileInvoiceDollar/>}/>
+                    <ModuleCard to="/app/invoices" text="Tickets" desc="Visualización de Tickets" img={<FaFileInvoiceDollar/>}/>
                     <ModuleCard to="/app/barbershop" text="Estética" desc="Calendarización de citas estéticas" img={<FaCut />}/>
                 </div>
             </div>

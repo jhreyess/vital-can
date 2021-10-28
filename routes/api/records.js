@@ -16,7 +16,6 @@ router.get('/clients', async (req, res) => {
 
 router.get('/clients/:id', async (req, res) => {
     const userdata = {};
-    console.log(req.params.id);
     let clientInfo = await Clients.findOne({_id: req.params.id}).exec();
     userdata.info = clientInfo;
     let clientPets = await Patients.find({"owner.id": req.params.id }).exec();

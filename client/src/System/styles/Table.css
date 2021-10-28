@@ -1,0 +1,93 @@
+.table{
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0px 3px 5px 0 rgb(0 0 0 / 20%);
+    font-family: sans-serif;
+    margin-top: 1em;
+}
+
+.table-actions{
+    text-align: center;
+}
+
+.table th,
+.table td{
+    border: 0;
+    padding: 0 8px;
+    font-size: 0.7em;
+    word-break: break-word;
+}
+
+.table th:not(.table-actions){
+    text-align: left;
+}
+
+.table th{
+    padding: 8px;
+    color: #193e50;
+}
+
+.adjusted th{
+    width: 30%;
+}
+
+.table th:first-child{
+    width: 8%;
+}
+
+.table .searchTable{
+    text-align: right;
+    width: 5%;
+}
+
+.table > thead{
+    background-color: #f8f8f8;
+}
+
+.table-row{
+    border-top: 1px solid #c0c0c0;
+    background-color: #fff;
+}
+
+.table-dark{
+    color: #404040;
+}
+
+.table-row > td > input{
+    border: 0;
+    margin: 0;
+    outline: none;
+    background-color: transparent;
+    width: 100%;
+    font-size: 0.95em;
+}
+
+.table-actions button{
+    background-color: transparent;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius:50%;
+    border: 0;
+    transition: 200ms ease;
+    position: relative;
+}
+
+.table-actions button:hover{
+    background-color: #eee;
+}
+
+.table-actions button svg{
+    position: absolute;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin: 0 auto;
+}
+
+.searchTable input{
+    font-size: 1em;
+    outline: none;
+    border: 1px solid #c0c0c0;
+    padding: 2px;
+}

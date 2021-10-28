@@ -1,0 +1,21 @@
+.rightSidebar{
+    background-color: #045e8b;
+    width: 30%;
+    height: 100%;
+    padding: 1em;
+    box-sizing: border-box;
+    color: #fafafa;
+    position: relative;
+}
+
+.payment-info h2{
+    margin: 0;
+}
+
+.payment{
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    left: 1em;
+    text-align: right;
+}

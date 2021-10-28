@@ -1,5 +1,4 @@
 import { Switch, Route } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
 
 import Main from '../components/MainPage/Main';
 import Records from '../components/MainPage/Modules/Records/Records';
@@ -16,11 +15,9 @@ import '../styles/Content.css';
 
 const Content = () => {
 
-    const location = useLocation();
-
     return(
         <div className="main">
-            <Sidebar type={location.pathname.split('/').pop() === 'app' ? 'profile' : 'def'} />
+            <Sidebar />
             <div className="content">
                 <Header />
                 <div className="data">

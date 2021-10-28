@@ -25,20 +25,23 @@ const Patients = () => {
 
     const lookFor = (e) => {
         let lookForRecords = e.target.value;
-        setShowRecords(showRecords => showRecords = records.filter(client => client.name.includes(lookForRecords)))
+        setShowRecords(showRecords => showRecords = records.filter(client => client.name.toLowerCase().includes(lookForRecords.toLowerCase())))
     }
 
-    const listPatients = showRecords.map((record, idx)=> 
-        <RecordCard 
-            key={idx}
-            isPatient={true}
-            to={`patients/${record._id}/`}
-            img={record.img}
-            name={record.name}
-            breed={record.breed}
-            owner={record.owner.name}
-        />
-    );
+    const listPatients = () => {
+        return showRecords.length !== 0
+            ? showRecords.map((record, idx)=> 
+                <RecordCard 
+                    key={idx}
+                    isPatient={true}
+                    to={`patients/${record._id}/`}
+                    img={record.img}
+                    name={record.name}
+                    breed={record.breed}
+                    owner={record.owner.name}
+                />)
+            : <h2 className="notFound" >No se encontraron resultados...</h2>
+    }
 
     useEffect(() => {
         const getRecords = async () => {
@@ -60,7 +63,7 @@ const Patients = () => {
                 </div>
                 <Divider title="Pacientes"/>
                 <div className="records patients">
-                    {hasLoaded ? listPatients : <Loader /> }
+                    {hasLoaded ? listPatients() : <Loader /> }
                 </div>
             </div>
         </Fragment>    

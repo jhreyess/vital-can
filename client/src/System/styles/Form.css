@@ -6,6 +6,11 @@
     padding: 0;
     overflow-y: scroll;
     flex-grow: 1;
+    margin-bottom: 1em;
+}
+
+.form-grow{
+    flex-grow: 1;
 }
 
 .is-main{
@@ -33,7 +38,7 @@
 }
 
 .form-column-inner{
-    padding: 0 8px 0 0;
+    flex-grow: 1;
 }
 
 .form-column.last-column{
@@ -64,9 +69,12 @@
 .form-input{
     color: #404040;
     flex: 1 0 45%;
-    margin: 0 1em 0 0;
     display: flex;
     flex-direction: column;
+}
+
+.form-input:not(:last-child){
+    margin: 0 1em 0 0;
 }
 
 .form-input-inner{
@@ -132,9 +140,9 @@
     margin-top: 2em;
 }
 
-.submit-row-inversed{
+.submit-row-small{
     display: flex;
-    margin: 0.5em 0 1em 0;
+    margin-top: 0.5em;
 }
 
 .submit-input{
@@ -151,4 +159,9 @@ input[type=file]{
     margin-left: 16px;
     font-size: 17px;
     border: 1px solid #cacaca;
+}
+
+.notFound{
+    margin: 0;
+    color: #404040;
 }

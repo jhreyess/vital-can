@@ -1,0 +1,93 @@
+.ticketInfo{
+    display: flex;
+}
+
+.ticketColumn:first-child{
+    flex-basis: 65%;
+}
+
+.ticketColumn p{
+    font-size: 0.75em;
+}
+
+.ticketTotal{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.ticketTotal h4{
+    text-align: center;
+    color: #404040;
+    font-size: 0.8em;
+}
+
+.ticketTotal input{
+    outline: 0;
+    border: 1px solid #e0e0e0;
+    font-weight: bold;
+    width: 30%;
+}
+
+.ticketPrint{
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+.ticketsContainer{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ticketWrapper{
+    flex-basis: 50%;
+    padding: 1em;
+    box-sizing: border-box;
+}
+
+.ticketCard{
+    background-color: rgba(255,255,255,0.5);
+    box-shadow: 0px 3px 5px 0 rgb(0 0 0 / 20%), 
+                0px 2px 2px 0 rgb(0 0 0 / 14%), 
+                0px 1px 3px 0 rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticketCard h2{
+    color: #193e50;
+}
+
+.ticketCardInfo p{
+    color: #707070;
+    margin: 0;
+    margin-top: 0.5em;
+}
+
+.ticketButton button{
+    color: #193e50;
+    background-color: transparent;
+    border: 0;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    position: relative;
+}
+
+.ticketButton button svg{
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+.ticketButton button:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+}

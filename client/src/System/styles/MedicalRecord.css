@@ -36,13 +36,14 @@
 
 .medicalRecordInfo{
     border-radius: 0 0 8px 8px;
-    padding: 16px;
     background-color: #fff;
     border: 1px solid #3399ff;
     border-top: none;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    overflow-y: hidden;
+    padding: 1em;
 }
 
 .medicalRecordInfo > .appointment{
@@ -52,37 +53,6 @@
     display: inline-flex;
     align-items: center;
     border-bottom: 1px solid #c0c0c0;
-}
-
-.vaccines{
-    border-collapse: collapse;
-    width: 100%;
-}
-
-.vaccines th,
-.vaccines td{
-    border: 1px solid #c0c0c0;
-    font-size: 0.7em;
-    text-align: left;
-    padding: 8px;
-    word-break: break-word;
-}
-
-tr > .vaccineActions{
-    text-align: center;
-}
-
-.vaccine:nth-child(even){
-    background-color: #e0e0e0;
-}
-
-.vaccine > td > input{
-    border: 0;
-    margin: 0;
-    outline: none;
-    background-color: transparent;
-    width: 100%;
-    font-size: 0.95em;
 }
 
 .appointment > .appointmentInfo{

@@ -6,7 +6,7 @@ import Loader from '../../../Menu/Loader';
 import Divider from '../../../Menu/Divider';
 import Subheader from '../../../Menu/Subheader';
 
-import pet_img from '../../../../assets/default.jpg';
+import pet_img from '../../../../assets/dog.jpg';
 
 import {FaHouseUser, FaMailBulk, FaPhoneAlt} from 'react-icons/fa';
 
@@ -52,11 +52,13 @@ const ClientProfile = (props) => {
                     {data.pets.map((pet, idx) => 
                         <div className="pet" key={pet._id}>
                             <div className="petImage">
-                                <img src={pet_img} alt=""></img>
+                                <Link to={`/app/records/patients/${pet._id}/`} className="petLink">
+                                    <img src={pet_img} alt=""></img>
+                                </Link>
                             </div>
                             <div className="petInfo">
-                                <p>{pet.name}</p>
-                                <p>{pet.breed}</p>
+                                <h5>{pet.name}</h5>
+                                <h6>{pet.breed}</h6>
                             </div>
                         </div>
                     )}

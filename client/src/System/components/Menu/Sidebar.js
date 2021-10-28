@@ -1,28 +1,15 @@
-import {Fragment} from 'react';
-
 import {Link} from 'react-router-dom';
 
 import Menu from './Menu';
 
-import auth from '../../actions/authActions';
-
-import profile from '../../assets/profile.png';
-
 import { FaCalendarAlt, FaCut, FaFileInvoiceDollar, FaCashRegister  } from 'react-icons/fa';
-import {FaPaw, FaUsers, FaClipboard} from 'react-icons/fa';
+import {FaPaw, FaUsers, FaClipboard, FaHome} from 'react-icons/fa';
 
-const Sidebar = (props) => {
+const Sidebar = () => {
     
-    const profileSidebar = (
+    return(
         <Menu>
-            <p>Empleado(a)</p>
-            <img alt="" src={profile}></img>
-            <h1>{auth.name()}</h1>
-        </Menu>
-    );
-
-    const regularSidebar = (
-        <Menu>
+            <Link to="/app"><FaHome /> <div>Inicio</div></Link>
             <Link to="/app/records"><FaClipboard /> <div>Expedientes</div></Link>
                 <div className="submenuItems">
                     <Link to="/app/records/patients"><FaPaw /> <div>Pacientes</div></Link>
@@ -34,19 +21,13 @@ const Sidebar = (props) => {
             <Link to="/app/barbershop"><FaCut /> <div>Peluquería</div></Link>
                 <div className="submenuItems">
                 </div>
-            <Link to="/app/invoices"><FaFileInvoiceDollar /> <div>Facturación</div></Link>
+            <Link to="/app/invoices"><FaFileInvoiceDollar /> <div>Tickets</div></Link>
                 <div className="submenuItems">
                 </div>
             <Link to="/app/receipts"><FaCashRegister /> <div>Caja</div></Link>
                 <div className="submenuItems">
                 </div>
         </Menu>
-    )
-    
-    return(
-        <Fragment>
-            {props.type === 'profile' ?  profileSidebar : regularSidebar}
-        </Fragment>
     )
 }
 

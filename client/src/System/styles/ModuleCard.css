@@ -16,6 +16,11 @@
     overflow-y: scroll;
 }
 
+.moduleContent-cols{
+    display: flex;
+    height: 95%;
+}
+
 .moduleCardwrapper{
     border-radius: 4px;
 }

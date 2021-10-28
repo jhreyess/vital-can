@@ -105,11 +105,11 @@ const NewRecord = (props) => {
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="tel1" className="required">Teléfono 1:</label>
-                                    <input type="text" id="tel1" name="tel1" required />
+                                    <input type="text" maxLength="10" minLength="8" id="tel1" name="tel1" required />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="tel2">Teléfono 2:</label>
-                                    <input type="text" id="tel2" name="tel2" />
+                                    <input type="text" maxLength="10" minLength="8" id="tel2" name="tel2" />
                                 </div>
                             </div>
                             <div className="submit-row">
@@ -142,7 +142,7 @@ const NewRecord = (props) => {
                                     <label htmlFor="owner" className="required" >Propietario:</label>
                                     <input list="owners" id="owner" name="owner" required />
                                     <datalist id="owners">
-                                        {hasLoaded ? owners : "LOL"}
+                                        {hasLoaded ? owners : "ERROR"}
                                     </datalist>
                                 </div>
                             </div>

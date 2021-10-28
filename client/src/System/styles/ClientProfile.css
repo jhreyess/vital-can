@@ -23,10 +23,10 @@
 }
 
 .pet{
-    background-color: #e0e0e0;
-    border: 1px solid #c0c0c0;
+    border: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
+    border-radius: 8px;
 }
 
 .petImage{
@@ -37,14 +37,21 @@
 .petImage img{
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    border-radius: 8px 0 0 8px;
 }
 
 .petInfo{
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
-.petInfo p{
+.petInfo h5,
+.petInfo h6{
     margin: 0;
+}
+
+.petInfo h6{
+    font-weight: normal;
 }
 
 .newPet{
