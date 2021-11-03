@@ -189,10 +189,12 @@ const Receipts = () => {
                                             <th>Nombre</th>
                                             <th>Precio</th>
                                             <th className="table-actions">Cantidad</th>
-                                            <th className="searchTable"><input type="text" placeHolder="Buscar" onChange={(e) => lookFor(e, "services")}/></th>
+                                            <th className="searchTable"><input type="text" placeholder="Buscar" onChange={(e) => lookFor(e, "services")}/></th>
                                         </tr>
                                     </thead>
+                                    <tbody>
                                     {showServicesTable}
+                                    </tbody>
                                 </Table>
                             </div>
                         </div>
@@ -206,17 +208,19 @@ const Receipts = () => {
                                             <th>Nombre</th>
                                             <th>Precio</th>
                                             <th className="table-actions">Cantidad</th>
-                                            <th className="searchTable"><input type="text" placeHolder="Buscar" onChange={(e) => lookFor(e, "products")}/></th>
+                                            <th className="searchTable"><input type="text" placeholder="Buscar" onChange={(e) => lookFor(e, "products")}/></th>
                                         </tr>
                                     </thead>
+                                    <tbody>
                                     {showProductsTable}
+                                    </tbody>
                                 </Table>
                             </div>
                         </div>
                     </div>
                 </Form>
                 <RightSidebar>
-                    <div className="payment-info">
+                    <div className="right-sidebar-info">
                         <h2>Atiende:</h2>
                         <p>{auth.name()}</p>
                         <p>{new Date().toLocaleDateString('es-MX', {weekday: 'long', year:'numeric', month: 'short', day: 'numeric'})}</p>
@@ -231,17 +235,19 @@ const Receipts = () => {
                                     <th>Precio</th>
                                 </tr>
                             </thead>
-                        {cart.map((item, idx) => 
-                            <tr className="table-row table-dark">
-                                <td>{idx+1}</td>
-                                <td>{item.name}</td>
-                                <td>{item.count}</td>
-                                <td>{item.price} MXN</td>
-                            </tr>                        
-                        )}
+                            <tbody>
+                            {cart.map((item, idx) => 
+                                <tr key={idx} className="table-row table-dark">
+                                    <td>{idx+1}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.count}</td>
+                                    <td>{item.price} MXN</td>
+                                </tr>                        
+                            )}
+                            </tbody>
                         </Table>
                     </div>
-                    <div className="payment">
+                    <div className="right-sidebar-footer">
                         <h1>Total: ${total}</h1>
                         <button className="btn green extended" disabled={cart.length === 0} onClick={makeTicket}>Generar Ticket</button>
                     </div>
@@ -272,13 +278,15 @@ const Receipts = () => {
                             <th>Precio Unitario</th>
                         </tr>
                     </thead>
+                    <tbody>
                     {cart.map((item, idx) => 
-                        <tr className="table-row">
+                        <tr key={idx} className="table-row">
                             <td>{item.count}x</td>
                             <td>{item.name}</td>
                             <td>{item.price} MXN</td>
                         </tr>                        
                     )}
+                    </tbody>
                 </Table>
                 <div className="ticketTotal">
                     <h4>Total: ${total}</h4>

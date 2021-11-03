@@ -30,6 +30,20 @@
     background-color: rgb(17,158,12);
 }
 
+.red{
+    border-color: #dc143e;
+    background-color: #dc143e;
+    color: #fafafa;
+}
+
+.red:hover{
+    background-color:#af0f32;
+}
+
+.red:active{
+    color: #e0e0e0;
+    background-color: #dd274f;
+}
 
 .blue{
     border-color: #3399ff;
@@ -43,7 +57,7 @@
 
 .blue:active{
     color: #e0e0e0;
-    background-color: hsl(200, 96%, 25%)
+    background-color: #03547d
 }
 
 .darkblue{

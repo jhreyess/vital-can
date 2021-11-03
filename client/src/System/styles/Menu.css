@@ -77,10 +77,13 @@
     background-color: #fafafa;
 }
 
-.menuItem a:active,
-.logout:active{
-    margin-left: 2px solid #1577bd;
-    color: #1577bd;
+.menuItem .activeSidebar::before,
+.logout .activeSidebar::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 2.5em;
+    width: 5px;
     background-color: #fafafa;
 }
 

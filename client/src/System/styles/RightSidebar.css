@@ -8,11 +8,11 @@
     position: relative;
 }
 
-.payment-info h2{
+.right-sidebar-info h2{
     margin: 0;
 }
 
-.payment{
+.right-sidebar-footer{
     position: absolute;
     bottom: 1em;
     right: 1em;

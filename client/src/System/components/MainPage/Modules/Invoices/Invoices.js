@@ -68,7 +68,7 @@ const Invoices = () => {
 
     const listTickets = (
         showTickets.map((ticket, idx) => (
-            <Ticket ticket={ticket}>
+            <Ticket ticket={ticket} key={idx} >
                 <h2>Ticket {ticket.id}</h2>
                 <div className="ticketCardInfo">
                     <p>{ticket.owner}</p>
@@ -124,13 +124,15 @@ const Invoices = () => {
                                 <th>Precio Unitario</th>
                             </tr>
                         </thead>
+                        <tbody>
                         {view.cart !== undefined ? view.cart.map((item, idx) => 
-                            <tr className="table-row">
+                            <tr className="table-row" key={idx}>
                                 <td>{item.count}x</td>
                                 <td>{item.name}</td>
                                 <td>{item.price} MXN</td>
                             </tr>                        
                         ): null}
+                        </tbody>
                     </Table>
                     <div className="ticketTotal">
                         <h4>Total: ${view.total}</h4>

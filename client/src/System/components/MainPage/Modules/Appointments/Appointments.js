@@ -17,8 +17,8 @@ import Divider from '../../../Menu/Divider';
 
 import { FaTrashAlt } from 'react-icons/fa';
 
-const Barbershop = () => {
 
+const Appointments = () => {
     const [date, setDate] = useState(new Date().toLocaleDateString('es-MX', {weekday: 'long', year:'numeric', month: 'short', day: 'numeric'}));
     const [appointments, setAppointments] = useState([]);
     const [records, setRecords] = useState([]);
@@ -36,14 +36,14 @@ const Barbershop = () => {
     const path = (
         <Fragment>
             <Link to="/app" className="nav">Página Principal</Link><div className="arrow" />
-            <Link to="/app/barbershop" className="nav">Peluquería</Link>
+            <Link to="/app/calendar" className="nav">Citas</Link>
         </Fragment>
     )
 
     const fetchAppointments = () => {
-        let result = [ {time: "16:30", owner: "Diego Humberto", pet: "Thor", reason: "Baño y limpieza"},
-                       {time: "17:00", owner: "Ángel Eduardo", pet: "Rosty", reason: "Corte de pelo"},
-                       {time: "20:45", owner: "Cinthia Garza", pet: "Mermelada", reason: "Corte de uñas"},
+        let result = [ {time: "16:30", owner: "Diego Humberto", pet: "Thor", reason: "Enfermedad periodontal"},
+                       {time: "17:00", owner: "Ángel Eduardo", pet: "Rosty", reason: "Dermatitis atópica"},
+                       {time: "20:45", owner: "Cinthia Garza", pet: "Mermelada", reason: "Vacunación"},
                     ];
         setAppointments(prev => prev = result)
     }
@@ -127,4 +127,4 @@ const Barbershop = () => {
     )
 }
 
-export default Barbershop;
+export default Appointments;

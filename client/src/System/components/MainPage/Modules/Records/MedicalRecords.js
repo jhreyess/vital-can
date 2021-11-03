@@ -41,8 +41,8 @@ const MedicalRecords = (props) => {
             {date: "Septiembre 20 - 2020", reason: "Cita estética"},
          ]);
          setAppointments(appointments => appointments = [
-            {date: "Agosto 15 - 2021", reason: "Corte de uñas"}, 
-            {date: "Septiembre 20 - 2021", reason: "Baño Medicado"},
+            {date: "Noviembre 15 - 2021", reason: "Corte de uñas"}, 
+            {date: "Noviembre 20 - 2021", reason: "Baño Medicado"},
          ]);
     }, [props])
 

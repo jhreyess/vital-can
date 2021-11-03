@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import Menu from './Menu';
 
@@ -9,22 +9,22 @@ const Sidebar = () => {
     
     return(
         <Menu>
-            <Link to="/app"><FaHome /> <div>Inicio</div></Link>
-            <Link to="/app/records"><FaClipboard /> <div>Expedientes</div></Link>
+            <NavLink exact to="/app" activeClassName="activeSidebar"><FaHome /> <div>Inicio</div></NavLink>
+            <NavLink to="/app/records" activeClassName="activeSidebar" ><FaClipboard /> <div>Expedientes</div></NavLink>
                 <div className="submenuItems">
-                    <Link to="/app/records/patients"><FaPaw /> <div>Pacientes</div></Link>
-                    <Link to="/app/records/clients"><FaUsers /> <div>Clientes</div></Link>    
+                    <NavLink to="/app/records/patients" ><FaPaw /> <div>Pacientes</div></NavLink>
+                    <NavLink to="/app/records/clients" ><FaUsers /> <div>Clientes</div></NavLink>    
                 </div>
-            <Link to="/app/calendar"><FaCalendarAlt /> <div>Citas Médicas</div></Link>
+            <NavLink to="/app/calendar" activeClassName="activeSidebar"><FaCalendarAlt /> <div>Citas Médicas</div></NavLink>
                 <div className="submenuItems">   
                 </div>
-            <Link to="/app/barbershop"><FaCut /> <div>Peluquería</div></Link>
+            <NavLink to="/app/barbershop" activeClassName="activeSidebar"><FaCut /> <div>Peluquería</div></NavLink>
                 <div className="submenuItems">
                 </div>
-            <Link to="/app/invoices"><FaFileInvoiceDollar /> <div>Tickets</div></Link>
+            <NavLink to="/app/invoices" activeClassName="activeSidebar"><FaFileInvoiceDollar /> <div>Tickets</div></NavLink>
                 <div className="submenuItems">
                 </div>
-            <Link to="/app/receipts"><FaCashRegister /> <div>Caja</div></Link>
+            <NavLink to="/app/receipts" activeClassName="activeSidebar"><FaCashRegister /> <div>Caja</div></NavLink>
                 <div className="submenuItems">
                 </div>
         </Menu>

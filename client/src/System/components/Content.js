@@ -2,7 +2,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import Main from '../components/MainPage/Main';
 import Records from '../components/MainPage/Modules/Records/Records';
-import Calendar from '../components/MainPage/Modules/Calendar/Calendar';
+import Appointments from '../components/MainPage/Modules/Appointments/Appointments';
 import Receipts from '../components/MainPage/Modules/Receipts/Receipts';
 import Invoices from '../components/MainPage/Modules/Invoices/Invoices';
 import Barbershop from '../components/MainPage/Modules/Barbershop/Barbershop';
@@ -24,7 +24,7 @@ const Content = () => {
                     <Switch>
                         <Route exact path="/app" component={Main}></Route>
                         <Route path="/app/records" component={Records}></Route>
-                        <Route path="/app/calendar" component={Calendar}></Route>
+                        <Route path="/app/calendar" component={Appointments}></Route>
                         <Route path="/app/receipts" component={Receipts}></Route>
                         <Route path="/app/invoices" component={Invoices}></Route>
                         <Route path="/app/barbershop" component={Barbershop}></Route>
