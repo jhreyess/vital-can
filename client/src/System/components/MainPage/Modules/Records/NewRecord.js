@@ -20,6 +20,7 @@ const NewRecord = (props) => {
             if(props.url === 'patients'){
                 let result = await fetchRecords('clients');
                 setRecords(records => records = result);
+                
             }
             if (props.edit){
                 let result = props.url === 'patients' ? await fetchPatient(props.match.params.id) : await fetchUser(props.match.params.id);
@@ -28,13 +29,41 @@ const NewRecord = (props) => {
                 }else{
                     setRecord(record => record = result)
                }
+            }else{
+                if(props.url === 'clients'){
+                    setRecord({
+                        name: '',
+                        last_name: '',
+                        telephone1: '',
+                        telephone2: '',
+                        city: '',
+                        address: '',
+                    });
+                }else{
+                    setRecord({
+                        owner:{
+                            name: '',
+                            last_name: '',
+                        },
+                        breed: '',
+                        gender: '',
+                        health: {
+                            medHistory: '',
+                            castrated: '',
+                        },
+                        color: '',
+                        age: '',
+                        birthday: null,
+                        weight: '',
+                    }); 
+                }
             }
             setLoading(true);
         }
 
         fetchData();
 
-    }, [props.url, props.edit, props.match.params.id])
+    }, [props])
 
     const path = (
         <Fragment>
@@ -196,7 +225,7 @@ const NewRecord = (props) => {
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="birthday">Fecha de nacimiento:</label>
-                                    <input defaultValue={new Date(record.birthday).toISOString().substr(0,10)} type="date" id="birthday" name="birthday" onChange={onChange} />
+                                    <input defaultValue={record.birthday !== null ? new Date(record.birthday).toISOString().substr(0,10) : ''} type="date" id="birthday" name="birthday" onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="weight">Peso (kg):</label>
@@ -206,7 +235,7 @@ const NewRecord = (props) => {
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="color">Color/Pelaje:</label>
-                                    <input  type="text" name="color" id="color" onChange={onChange} />
+                                    <input type="text" name="color" id="color" onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="castrated">Castrado:</label>
