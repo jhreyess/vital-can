@@ -137,7 +137,7 @@ const Receipts = () => {
 
     const setOwner = (e) => {
         let matches = records.filter(pet => pet.name.includes(e.target.value));
-        document.getElementById('owner').value = matches.length === 0 ? "Not Found..." : matches[0].owner.name;
+        document.getElementById('owner').value = matches.length === 0 ? "No se encontraron resultados..." : matches[0].owner.name;
     }
 
     const makeTicket = (e) => {

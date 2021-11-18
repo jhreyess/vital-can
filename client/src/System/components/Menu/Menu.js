@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import '../../styles/Menu.css';
 
-import {FaCog} from 'react-icons/fa';
+import {FaCog, FaPowerOff} from 'react-icons/fa';
 
 const Menu = (props) => {
 
@@ -19,7 +19,7 @@ const Menu = (props) => {
     return(
         <div className="sidebar" id="sidebar">
             <div className="burgerContainer">
-                <div className="burgerIcon" onClick={changeStyle}>
+                <div className="burgerIcon active" onClick={changeStyle}>
                     <span className="burgerLine"></span>
                     <span className="burgerLine"></span>
                     <span className="burgerLine"></span>
@@ -30,7 +30,8 @@ const Menu = (props) => {
                         <div className="menuItem">{menuItem}</div>
                 ))}
             </div>
-            <Link to="/app/profile" id="logout" className="logout"><FaCog/> <div>Opciones</div></Link>
+            {/*<Link to="/app/profile" id="logout" className="logout"><FaCog/> <div>Opciones</div></Link>*/}
+            <Link to="/" id="logout" className="logout"><FaPowerOff /> <div>Cerrar Sesión</div></Link>
         </div>
     )
 }

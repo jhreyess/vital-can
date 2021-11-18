@@ -52,18 +52,18 @@
 }
 
 .blue:hover{
-    background-color: #045e8b;
+    background-color: #0066cc;
+    border-color: #0066cc;
 }
 
 .blue:active{
-    color: #e0e0e0;
     background-color: #03547d
 }
 
 .darkblue{
     border-color: #1577bd;
     background-color: #1577bd;
-    color: #e0e0e0;
+    color: #fafafa;
 }
 
 .darkblue:hover{
@@ -116,4 +116,17 @@
     border-color: #404040;
     color: #707070;
     pointer-events: none;
+}
+
+.gray{
+    background-color: #6c757d;
+    color: #fafafa;
+}
+
+.gray:hover{
+    background-color: #505a62;
+}
+
+.gray:active{
+    color: #fafafa;
 }

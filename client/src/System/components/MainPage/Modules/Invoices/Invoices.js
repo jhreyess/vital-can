@@ -13,9 +13,10 @@ import { FaAngleRight } from 'react-icons/fa';
 const Invoices = () => {
 
     const [tickets, setTickets] = useState([]);
-    const [view, setView] = useState({});
+    const [view, setView] = useState({id: '', ticket:''});
     const [showTickets, setShowTickets] = useState([]);
     const [isVisible, setModal] = useState(false);
+    const [showDeleteModal, setDeleteModal] = useState(false)
 
     useEffect(() => {
         setTickets(tickets => tickets = [
@@ -55,15 +56,27 @@ const Invoices = () => {
         </Fragment>
     )
 
-    const showModal = (e, ticket) => {
+    const showModal = (e, id, ticket) => {
         e.preventDefault();
         setModal(show => show = true);
-        setView(prev => prev = ticket);
+        setView(prev => prev = {id, ticket});
     }
 
     const print = (e) => {
         e.preventDefault();
         window.print();
+    }
+
+    const deleteModal = e => {
+        e.preventDefault();
+        setDeleteModal(show => show = true);
+    }
+
+    const deleteTicket = e => {
+        e.preventDefault();
+        showTickets.splice(view.id, 1);
+        setModal(show => show = false);
+        setDeleteModal(show => show = false);
     }
 
     const listTickets = (
@@ -76,7 +89,7 @@ const Invoices = () => {
                     <p>Total: ${ticket.total}</p>
                 </div>
                 <div className="ticketButton">
-                    <button onClick={(e) => showModal(e, ticket)}><FaAngleRight /></button>
+                    <button onClick={(e) => showModal(e, idx, ticket)}><FaAngleRight /></button>
                 </div>
             </Ticket>
         ))
@@ -100,7 +113,7 @@ const Invoices = () => {
                     {listTickets}
                 </div>
                 <Modal isActive={isVisible} setShowModal={setModal} >
-                    <h3>Ticket {view.id}</h3>
+                    <h3>Ticket {view.ticket.id}</h3>
                     <Divider title="Información" />
                     <div className="ticketInfo">
                         <div className="ticketColumn">
@@ -110,10 +123,10 @@ const Invoices = () => {
                             <p>Tel: 12 3456 7890</p>
                         </div>
                         <div className="ticketColumn">
-                            <p>No. {view.id}</p>
+                            <p>No. {view.ticket.id}</p>
                             <p>Atendió:</p>
-                            <p>{view.inCharge}</p>
-                            <p>{new Date(view.date).toLocaleDateString()+" - "+new Date(view.date).toLocaleTimeString("es-MX")}</p>
+                            <p>{view.ticket.inCharge}</p>
+                            <p>{new Date(view.ticket.date).toLocaleDateString()+" - "+new Date(view.ticket.date).toLocaleTimeString("es-MX")}</p>
                         </div>
                     </div>
                     <Table adjusted={true}>
@@ -125,7 +138,7 @@ const Invoices = () => {
                             </tr>
                         </thead>
                         <tbody>
-                        {view.cart !== undefined ? view.cart.map((item, idx) => 
+                        {view.ticket.cart !== undefined ? view.ticket.cart.map((item, idx) => 
                             <tr className="table-row" key={idx}>
                                 <td>{item.count}x</td>
                                 <td>{item.name}</td>
@@ -135,12 +148,23 @@ const Invoices = () => {
                         </tbody>
                     </Table>
                     <div className="ticketTotal">
-                        <h4>Total: ${view.total}</h4>
-                        <h4>Entregado: ${view.given}</h4>
-                        <h4>Cambio: ${view.change}</h4>
+                        <h4>Total: ${view.ticket.total}</h4>
+                        <h4>Entregado: ${view.ticket.given}</h4>
+                        <h4>Cambio: ${view.ticket.change}</h4>
                     </div>
                     <div className="ticketPrint">
+                        <button className="btn small red" onClick={deleteModal}>Eliminar</button>
                         <button className="btn small blue-outline" onClick={print}>Imprimir</button>
+                    </div>
+                </Modal>
+                <Modal isActive={showDeleteModal} setShowModal={setDeleteModal}>
+                    <div className="modalDescription">
+                        <h2>¿Estás seguro que deseas eliminar?</h2>
+                        <p>Esta acción no podrá deshacerse</p>
+                    </div>
+                    <div className="confirmationButtons">
+                        <button className="btn blue-outline" onClick={() => setDeleteModal(showModalDelete => showModalDelete = false)}>Cancelar</button>
+                        <button className="btn green" onClick={deleteTicket}>Confirmar</button>
                     </div>
                 </Modal>
             </div>

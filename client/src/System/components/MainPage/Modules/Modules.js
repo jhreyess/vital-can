@@ -8,7 +8,7 @@ import { FaCalendarAlt, FaCashRegister, FaChartBar, FaFolderOpen, FaCut, FaFileI
 
 const Modules = () => {
     const adminModule = auth.role() === "admin" ? (
-        <ModuleCard to="/admin" text="Dashboard" desc="Business Management" img={<FaChartBar />} />
+        <ModuleCard to="/admin" text="Administración" desc="Administración del negocio" img={<FaChartBar />} />
     ) : null;
 
     return(

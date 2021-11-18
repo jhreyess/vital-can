@@ -9,6 +9,8 @@ import MedicalRecords from './MedicalRecords';
 import Loader from '../../../Menu/Loader';
 import Divider from '../../../Menu/Divider';
 import Subheader from '../../../Menu/Subheader';
+import Button from '../../../Menu/Button';
+import Modal from '../../../Menu/Modal';
 
 import pet_img from '../../../../assets/dog.jpg';
 
@@ -18,6 +20,7 @@ const PatientProfile = (props) => {
     const location = useLocation();
     const [data, setData] = useState({});
     const [hasLoaded, setLoading] = useState(false);
+    const [showModalDelete, setModalDelete] = useState(false)
     
     useEffect(() => {
         fetchPatient(props.match.params.id).then(patientData => {
@@ -41,6 +44,11 @@ const PatientProfile = (props) => {
             }
         </Fragment>
     );
+
+    const showModal = (e) => {
+        e.preventDefault();
+        setModalDelete(prev => prev = true);
+    }
 
     const userData = ( hasLoaded &&
         <Fragment>
@@ -67,6 +75,14 @@ const PatientProfile = (props) => {
                             <div className="recordInformation"><FaMars /> {data.gender}</div>
                             <div className="recordInformation"><FaDumbbell /> {data.weight} kg</div>
                             <div className="recordInformation"><FaBirthdayCake /> {new Date(data.birthday).toLocaleDateString("es-MX")}</div>
+                            <div className="submit-row">
+                                <div className="submit-input">
+                                    <Button color="gray" to={`/app/records/patients/${data._id}/edit`}>Editar</Button>
+                                </div>
+                                <div className="submit-input">
+                                    <button className="btn darkblue" onClick={showModal}>Eliminar</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -100,6 +116,16 @@ const PatientProfile = (props) => {
             <div className="petProfileContent">
                 {hasLoaded ? userData : <Loader />}
             </div>
+            <Modal isActive={showModalDelete} setShowModal={setModalDelete}>
+                <div className="modalDescription">
+                    <h2>¿Estás seguro que deseas eliminar?</h2>
+                    <p>Esta acción no podrá deshacerse</p>
+                </div>
+                <div className="confirmationButtons">
+                    <button className="btn blue-outline" onClick={() => setModalDelete(showModalDelete => showModalDelete = false)}>Cancelar</button>
+                    <Button color="green" to='/app/records/patients'>Confirmar</Button>
+                </div>
+            </Modal>
         </Fragment>
     )
 }

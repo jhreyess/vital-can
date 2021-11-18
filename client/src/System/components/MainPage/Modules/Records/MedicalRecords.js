@@ -186,6 +186,7 @@ const MedicalRecords = (props) => {
                             <button className="btn blue-outline" onClick={updateInfo}>Guardar</button>
                         </div>
                         <Modal isActive={showModal} setShowModal={setModal}>
+                            <h3>Nuevo Registro</h3>
                             <Form inner={true}>
                                 <div className="form-column">
                                     <div className="form-row">
@@ -215,6 +216,7 @@ const MedicalRecords = (props) => {
                             </Form>
                         </Modal>
                         <Modal isActive={showModalEdit} setShowModal={setModalEdit}>
+                            <h3>Editar Registro</h3>
                             <Form inner={true}>
                                 <div className="form-column">
                                     <div className="form-row">

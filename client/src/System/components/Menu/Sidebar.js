@@ -12,8 +12,8 @@ const Sidebar = () => {
             <NavLink exact to="/app" activeClassName="activeSidebar"><FaHome /> <div>Inicio</div></NavLink>
             <NavLink to="/app/records" activeClassName="activeSidebar" ><FaClipboard /> <div>Expedientes</div></NavLink>
                 <div className="submenuItems">
-                    <NavLink to="/app/records/patients" ><FaPaw /> <div>Pacientes</div></NavLink>
                     <NavLink to="/app/records/clients" ><FaUsers /> <div>Clientes</div></NavLink>    
+                    <NavLink to="/app/records/patients" ><FaPaw /> <div>Pacientes</div></NavLink>
                 </div>
             <NavLink to="/app/calendar" activeClassName="activeSidebar"><FaCalendarAlt /> <div>Citas Médicas</div></NavLink>
                 <div className="submenuItems">   

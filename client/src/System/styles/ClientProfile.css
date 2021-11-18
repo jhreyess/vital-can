@@ -5,6 +5,8 @@
 
 .profileHeader{
     padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
     margin: 1em 2em 0 2em;
 }
 

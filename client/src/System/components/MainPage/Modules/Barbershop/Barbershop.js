@@ -21,8 +21,10 @@ const Barbershop = () => {
 
     const [date, setDate] = useState(new Date().toLocaleDateString('es-MX', {weekday: 'long', year:'numeric', month: 'short', day: 'numeric'}));
     const [appointments, setAppointments] = useState([]);
+    const [toModify, setToModify] = useState({})
     const [records, setRecords] = useState([]);
     const [showModal, setShowModal] = useState(false);
+    const [showModalDelete, setModalDelete] = useState(false);
     const [hasLoaded, setLoading] = useState(false);
 
     useEffect(() => {
@@ -53,23 +55,55 @@ const Barbershop = () => {
         fetchAppointments();
     }
 
-    const appointmentsList = (
-        appointments.map((appointment, idx) => (
-            <AppointmentCard>
-                <div className="appointment-info">
-                    <h4>{appointment.time}</h4>
-                    <p>{appointment.owner}</p>
-                    <p>{appointment.pet}</p>
-                    <p>{appointment.reason}</p>
-                </div>
-                <div className="delete"><FaTrashAlt className="icon-red" /></div>
-            </AppointmentCard>
-        ))
-    );
+    const deleteModal = (e, id, appoint) => {
+        e.preventDefault()
+        setModalDelete(prev => prev = true)
+        setToModify(toModify => toModify = {id, appoint});
+        console.log(toModify)
+    }
+
+    const deleteAppointment = (e) => {
+        e.preventDefault();
+        let replace = [...appointments]
+        replace.splice(toModify.id, 1)
+        setAppointments(prev => prev = replace)
+        setModalDelete(prev => prev = false)
+    }
+
+    const showAddModal = e => {
+        e.preventDefault();
+        setToModify(prev => prev = {id: '', appoint: ''})
+        setShowModal(prev => prev = true);
+    }
+
+    const onChange = e => {
+        setToModify(prevState => ({
+            ...prevState,
+            appoint: {
+                ...toModify.appoint,
+                [e.target.id]: e.target.value
+            }
+        }));
+        if(e.target.id === 'pet'){
+            let matches = records.filter(pet => pet.name.includes(e.target.value));
+            let name = matches.length === 0 ? "No se encontraron resultados..." : matches[0].owner.name
+            document.getElementById('owner').value = name;
+            setToModify(prevState => ({
+                ...prevState,
+                appoint: {
+                    ...prevState.appoint,
+                    owner: name
+                }
+            }));
+        }
+    }
 
     const addAppointment = e => {
         e.preventDefault();
-        setShowModal(prev => prev = true);
+        let replace = [...appointments]
+        replace.push(toModify.appoint)
+        setAppointments(prev => prev = replace)
+        setShowModal(prev => prev = false)
     }
 
     const showPatients = records.map((record, idx) => 
@@ -86,10 +120,25 @@ const Barbershop = () => {
                         {date}
                     </div>
                     <div className="appointmentsContainer">
-                        {appointmentsList}
+                        { appointments.length === 0
+                         ? <h2>Selecciona un día para visalizar las citas</h2>
+                         : appointments.map((appointment, idx) => (
+                            <AppointmentCard key={idx}>
+                                <div className="appointment-info">
+                                    <h4>{appointment.time}</h4>
+                                    <h4>{appointment.owner}</h4>
+                                    <h5>Paciente: {appointment.pet}</h5>
+                                    <h5>{appointment.reason}</h5>
+                                </div>
+                                <div className="delete">
+                                    <button onClick={(e) => deleteModal(e, idx, appointment)}><FaTrashAlt className="icon-red" /></button>
+                                </div>
+                            </AppointmentCard>
+                        ))
+                        }
                     </div>
                     <div className="right-sidebar-footer">
-                        <button className="btn green extended" disabled={appointments.length === 0} onClick={(e) => addAppointment(e)}>Agendar Cita</button>
+                        <button className="btn green extended" disabled={appointments.length === 0} onClick={showAddModal}>Agendar Cita</button>
                     </div>
                 </RightSidebar>
             </div>
@@ -100,28 +149,42 @@ const Barbershop = () => {
                     <div className="form-column-inner">
                         <div className="form-row form-row-inner">
                             <div className="form-input form-input-inner">
-                                    <label className="required">Paciente</label>
-                                    <input list="patients"></input>
-                                    <datalist id="patients">
-                                        {hasLoaded ? showPatients : null}
-                                    </datalist>
+                                <label className="required">Paciente: </label>
+                                <input name="pet" id="pet" list="patients" onChange={onChange}></input>
+                                <datalist id="patients">
+                                    {hasLoaded ? showPatients : null}
+                                </datalist>
                             </div>
                             <div className="form-input form-input-inner">
-                                <label className="required">Hora</label>
-                                <input type="time"></input>
+                                <label className="required">Dueño: </label>
+                                <input type="text" id="owner" name="owner" readOnly/>
                             </div>
                         </div>
                         <div className="form-row form-row-inner">
                             <div className="form-input form-input-inner">
-                                <label>Motivo</label>
-                                <textarea></textarea>
+                                <label className="required">Motivo:</label>
+                                <textarea name="reason" id="reason" onChange={onChange}></textarea>
+                            </div>
+                            <div className="form-input form-input-inner">
+                                <label className="required" >Hora:</label>
+                                <input name="time" id="time" type="time" onChange={onChange} ></input>
                             </div>
                         </div>
                         <div className="submit-row">
-                            <button className="btn green extended" onClick={(e) => e.preventDefault()}>Añadir</button>
+                            <button type="submit" className="btn green extended" onClick={addAppointment}>Añadir</button>
                         </div>
                     </div>
                 </Form>
+            </Modal>
+            <Modal isActive={showModalDelete} setShowModal={setModalDelete}>
+                <div className="modalDescription">
+                    <h2>¿Estás seguro que deseas eliminar?</h2>
+                    <p>Esta acción no podrá deshacerse</p>
+                </div>
+                <div className="confirmationButtons">
+                    <button className="btn blue-outline" onClick={() => setModalDelete(showModalDelete => showModalDelete = false)}>Cancelar</button>
+                    <button className="btn green" onClick={deleteAppointment}>Confirmar</button>
+                </div>
             </Modal>
         </Fragment>
     )

@@ -5,34 +5,59 @@ import Subheader from '../../../Menu/Subheader';
 import Form from '../Form';
 
 import default_img from '../../../../assets/default.jpg';
-import { fetchRecords } from '../../../../actions/systemActions'
+import { fetchPatient, fetchRecords, fetchUser } from '../../../../actions/systemActions'
 
 const NewRecord = (props) => {
     
     const url = props.url === 'clients' ? 'Clientes' : 'Pacientes';
     const [records, setRecords] = useState([]);
+    const [record, setRecord] = useState({});
     const [hasLoaded, setLoading] = useState(false);
 
     useEffect(() => {
-        if (props.url !== 'clients'){
-            const fetch = async () => {
+        const fetchData = async() => {
+            setLoading(false);
+            if(props.url === 'patients'){
                 let result = await fetchRecords('clients');
                 setRecords(records => records = result);
-                setLoading(hasLoaded => hasLoaded = true);
             }
-            fetch();
+            if (props.edit){
+                let result = props.url === 'patients' ? await fetchPatient(props.match.params.id) : await fetchUser(props.match.params.id);
+                if(props.url === 'clients'){
+                    setRecord(record => record = result.info);
+                }else{
+                    setRecord(record => record = result)
+               }
+            }
+            setLoading(true);
         }
-        
-    }, [props.url])
+
+        fetchData();
+
+    }, [props.url, props.edit, props.match.params.id])
 
     const path = (
         <Fragment>
             <Link to="/app" className="nav">Página Principal</Link><div className="arrow" />
             <Link to="/app/records" className="nav">Expedientes</Link><div className="arrow" />
             <Link to={`/app/records/${props.url}`} className="nav">{url}</Link><div className="arrow" />
-            <Link to={`/app/records/${props.url}/new`} className="nav">Nuevo</Link>
+            {props.edit
+                ? <Fragment>
+                    <Link to={`/app/records/${props.url}/${props.match.params.id}`} className="nav">Perfil</Link><div className="arrow" />
+                    <Link to={`/app/records/${props.url}/${props.match.params.id}/edit`} className="nav">Editar</Link>
+                  </Fragment>
+                : <Link to={`/app/records/${props.url}/new`} className="nav">Nuevo</Link>
+            }
         </Fragment>
     )
+
+    const onChange = e => {
+        setRecord(prevState => ({
+            ...prevState,
+            [e.target.id]: e.target.value
+        }));
+        console.log(record)
+    }
 
     const clearData = (e) => {
         e.preventDefault();
@@ -71,6 +96,7 @@ const NewRecord = (props) => {
     }
 
     const switchForm = (url) => {
+        if(hasLoaded){
         switch(url){
             case 'clients':
                 return(
@@ -79,43 +105,45 @@ const NewRecord = (props) => {
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="name" className="required" >Nombre(s):</label>
-                                    <input type="text" id="name" name="name" required />
+                                    <input defaultValue={record.name} type="text" id="name" name="name" required onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="last_name" className="required" >Apellidos:</label>
-                                    <input type="text" id="last_name" name="last_name" required />
+                                    <input defaultValue={record.last_name} type="text" id="last_name" name="last_name" required onChange={onChange} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="address">Dirección:</label>
-                                    <input type="text" id="address" name="address" />                            
+                                    <input defaultValue={record.address} type="text" id="address" name="address" onChange={onChange} />                            
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="city" >Municipio:</label>
-                                    <input type="text" id="city" name="city" />
+                                    <input defaultValue={record.city} type="text" id="city" name="city" onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="email">Correo Electrónico:</label>
-                                    <input type="email" id="email" name="email" />
+                                    <input defaultValue={record.email} type="email" id="email" name="email" onChange={onChange} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="tel1" className="required">Teléfono 1:</label>
-                                    <input type="text" maxLength="10" minLength="8" id="tel1" name="tel1" required />
+                                    <input defaultValue={record.telephone1} type="text" maxLength="10" minLength="8" id="tel1" name="tel1" required onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="tel2">Teléfono 2:</label>
-                                    <input type="text" maxLength="10" minLength="8" id="tel2" name="tel2" />
+                                    <input defaultValue={record.telephone2} type="text" maxLength="10" minLength="8" id="tel2" name="tel2" onChange={onChange} />
                                 </div>
                             </div>
                             <div className="submit-row">
                                 <div className="submit-input">
-                                    <button className="btn green" onClick={submit}>Agregar</button>
-                                </div>
+                                    {props.edit
+                                        ? <button className="btn green" onClick={submit}>Actualizar</button>
+                                        : <button className="btn green" onClick={submit}>Agregar</button>
+                                    }                                </div>
                                 <div className="submit-input">
                                     <button className="btn blue-outline" onClick={clearData}>Limpiar Datos</button>
                                 </div>
@@ -129,18 +157,18 @@ const NewRecord = (props) => {
                         <div className="form-column">
                             <div className="form-row">
                                 <div className="form-input">
-                                    <label htmlFor="name" className="required" >Nombre(s):</label>
-                                    <input type="text" id="name" name="name" required />
+                                    <label htmlFor="name" className="required" >Nombre:</label>
+                                    <input defaultValue={record.name} type="text" id="name" name="name" required onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="age" className="required" >Edad:</label>
-                                    <input type="number" min="0" max="999" id="age" name="age" required />
+                                    <input defaultValue={record.age} type="number" min="0" max="999" id="age" name="age" required onChange={onChange} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="owner" className="required" >Propietario:</label>
-                                    <input list="owners" id="owner" name="owner" required />
+                                    <input defaultValue={`${record.owner.name} ${record.owner.last_name}`} list="owners" id="owner" name="owner" required onChange={onChange} />
                                     <datalist id="owners">
                                         {hasLoaded ? owners : "ERROR"}
                                     </datalist>
@@ -149,17 +177,17 @@ const NewRecord = (props) => {
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="breed" className="required">Raza:</label>
-                                    <input type="text" id="breed" name="breed" required />
+                                    <input defaultValue={record.breed} type="text" id="breed" name="breed" required onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="gender" className="required">Sexo:</label>
                                     <div className="form-subgroup" id="gender">
                                         <div className="form-subinput">
-                                            <input type="radio" id="male" name="gender" />
+                                            <input defaultValue={record.gender === 'M' ? 'on' : 'off'} checked={record.gender === 'M' ? true : false} type="radio" id="male" name="gender" onChange={onChange} />
                                             <span htmlFor="male">Macho</span>
                                         </div>
                                         <div className="form-subinput">
-                                            <input type="radio" id="female" name="gender" />
+                                            <input defaultValue={record.gender === 'F' ? 'on' : 'off'} checked={record.gender === 'F' ? true : false} type="radio" id="female" name="gender" onChange={onChange} />
                                             <span htmlFor="female">Hembra</span>
                                         </div>
                                     </div>
@@ -168,42 +196,39 @@ const NewRecord = (props) => {
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="birthday">Fecha de nacimiento:</label>
-                                    <input type="date" id="birthday" name="birthday" />
+                                    <input defaultValue={new Date(record.birthday).toISOString().substr(0,10)} type="date" id="birthday" name="birthday" onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="weight">Peso (kg):</label>
-                                    <input type="number" min="0" max="99" id="weight" name="weight" />
+                                    <input defaultValue={record.weight} type="number" min="0" max="99" id="weight" name="weight" onChange={onChange} />
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-input">
                                     <label htmlFor="color">Color/Pelaje:</label>
-                                    <input type="text" name="color" id="color" />
+                                    <input  type="text" name="color" id="color" onChange={onChange} />
                                 </div>
                                 <div className="form-input">
                                     <label htmlFor="castrated">Castrado:</label>
                                     <div className="form-subgroup" id="castrated">
                                         <div className="form-subinput">
-                                            <input type="checkbox" id="castrated-value" name="castrated" />
+                                            <input defaultValue={record.health.castrated} type="checkbox" id="castrated-value" name="castrated" onChange={onChange} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="form-row">
                                 <div className="form-input">
-                                    <label htmlFor="alergies">Alergias:</label>
-                                    <textarea id="alergies" name="alergies" rows="5"></textarea>
-                                </div>
-                            </div>
-                            <div className="form-row">
-                                <div className="form-input">
                                     <label htmlFor="history">Antecedentes:</label>
-                                    <textarea id="history" name="history" rows="5"></textarea>
+                                    <textarea defaultValue={record.health.medHistory} id="history" name="history" rows="5" onChange={onChange} ></textarea>
                                 </div>
                             </div>
                             <div className="submit-row">
                                 <div className="submit-input">
-                                    <button className="btn green" onClick={submit}>Agregar</button>
+                                    {props.edit
+                                        ? <button className="btn green" onClick={submit}>Actualizar</button>
+                                        : <button className="btn green" onClick={submit}>Agregar</button>
+                                    }
                                 </div>
                                 <div className="submit-input">
                                     <button className="btn blue-outline" onClick={clearData}>Limpiar Datos</button>
@@ -222,8 +247,8 @@ const NewRecord = (props) => {
                     </Form>                
                 );
             default: return null;
-        }
-    }
+        }}
+    } 
 
 
 

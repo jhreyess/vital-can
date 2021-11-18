@@ -29,6 +29,10 @@
     color: #3784ab;
 }
 
+.modalDescription{
+    color: #404040;
+}
+
 .modalContent .modalDescription{
     margin: 1em 0 2em 0;
 }

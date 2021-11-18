@@ -19,3 +19,9 @@
     left: 1em;
     text-align: right;
 }
+
+.appointmentsContainer{
+    padding: 1em;
+    height: 80%;
+    overflow-y: scroll;
+}

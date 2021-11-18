@@ -80,6 +80,7 @@
     width: 2.5em;
     height: 2.5em;
     position: relative;
+    transition: 200ms ease;
 }
 
 .ticketButton button svg{

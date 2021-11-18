@@ -15,7 +15,30 @@
     margin: 0.25em 0;
 }
 
-.appointment-info p{
+.appointment-card button{
+    background-color: transparent;
+    border: 0;
+    border-radius: 50%;
+    width: 2.5em;
+    height: 2.5em;
+    position: relative;
+    transition: 200ms ease;
+}
+
+.appointment-card button svg{
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+
+.appointment-card button:hover{
+    cursor: pointer;
+    background-color: #e0e0e0;
+}
+
+.appointment-info p,
+.appointment-info h5{
+    color: #404040;
+    font-weight: normal;
     margin: 0;
     margin-top: 0.5em;
 }

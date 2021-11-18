@@ -5,6 +5,8 @@ import { fetchUser } from '../../../../actions/systemActions';
 import Loader from '../../../Menu/Loader';
 import Divider from '../../../Menu/Divider';
 import Subheader from '../../../Menu/Subheader';
+import Button from '../../../Menu/Button';
+import Modal from '../../../Menu/Modal';
 
 import pet_img from '../../../../assets/dog.jpg';
 
@@ -15,7 +17,8 @@ import '../../../../styles/ClientProfile.css';
 const ClientProfile = (props) => {
     const [data, setData] = useState({});
     const [hasLoaded, setLoading] = useState(false);
-    
+    const [showModalDelete, setModalDelete] = useState(false)
+
     useEffect(() => {
         fetchUser(props.match.params.id).then(userData => {
             setData(data => data = userData );
@@ -40,10 +43,16 @@ const ClientProfile = (props) => {
         </Fragment>
     );
 
+    const showModal = (e) => {
+        e.preventDefault();
+        setModalDelete(prev => prev = true);
+    }        
+
     const userData = ( hasLoaded &&
         <Fragment>
             <div className="profileHeader">
                 {hasLoaded && <h1>{data.info.name} {data.info.last_name}</h1>}
+                <button className="btn darkblue" onClick={showModal}>Eliminar cliente</button>
             </div>
             <Divider title="Perfil"/>
             <div className="profileInfo">
@@ -75,6 +84,7 @@ const ClientProfile = (props) => {
                         <div className="recordInformation"><FaPhoneAlt /> {data.info.telephone2}</div>
                         <div className="recordInformation"><FaHouseUser /> {data.info.address}</div>
                         <div className="recordInformation"><FaMailBulk /> {data.info.email}</div>
+                        <Button color="gray" to={`/app/records/clients/${data.info._id}/edit`}>Editar</Button>
                     </div>
                 </div>
             </div>
@@ -87,6 +97,16 @@ const ClientProfile = (props) => {
             <div className="profileContent">
                 {hasLoaded ? userData : <Loader />}
             </div>
+            <Modal isActive={showModalDelete} setShowModal={setModalDelete}>
+                <div className="modalDescription">
+                    <h2>¿Estás seguro que deseas eliminar?</h2>
+                    <p>Esta acción no podrá deshacerse</p>
+                </div>
+                <div className="confirmationButtons">
+                    <button className="btn blue-outline" onClick={() => setModalDelete(showModalDelete => showModalDelete = false)}>Cancelar</button>
+                    <Button color="green" to='/app/records/clients'>Confirmar</Button>
+                </div>
+            </Modal>
         </Fragment>
     )
 }
